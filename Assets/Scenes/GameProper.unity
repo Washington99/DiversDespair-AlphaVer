@@ -1275,7 +1275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2583d48c48204d241b591c2d7aab0e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombObject: {fileID: 644528676306920553, guid: cb4949043cffad24683f873315957a4b, type: 3}
+  bombObject:
+  - {fileID: 1745486582615454592, guid: 38b8a25962803394595f5352cbd67439, type: 3}
+  - {fileID: 644528676306920553, guid: cb4949043cffad24683f873315957a4b, type: 3}
   initialBombsToSpawn: 1
   coinObject: {fileID: 3129830598565595640, guid: c6fb9608b3a86ff4baac001c7986489a, type: 3}
   initialCoinsToSpawn: 3

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Spawner : MonoBehaviour
 {
 
-    [SerializeField] private BombStructure bombObject;
+    [SerializeField] private BombStructure[] bombObject;
     [SerializeField] private int initialBombsToSpawn;
 
 
@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour
         // SPAWN BOMB
         if (spawnSeed > 8 && bombs.Count < bombsToSpawn) {
             GameObject bomb = Instantiate(
-                bombObject.gameObject, 
+                bombObject[Random.Range(0,2)].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
                 Quaternion.identity
                 );
