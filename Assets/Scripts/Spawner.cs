@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Spawner : MonoBehaviour
 {
 
-    [SerializeField] private Bomb bombObject;
+    [SerializeField] private BombStructure bombObject;
     [SerializeField] private int initialBombsToSpawn;
 
 
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int spawnWidth;
     [SerializeField] private depthTracker dt;
 
-    private List<Bomb> bombs;
+    private List<BombStructure> bombs;
     private List<Coin> coins;
     private List<Oxygen> oxygen;
     private List<Trap> traps;
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bombs = new List<Bomb>();
+        bombs = new List<BombStructure>();
         coins = new List<Coin>();
         oxygen = new List<Oxygen>();
         traps = new List<Trap>();
@@ -74,8 +74,8 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             bomb.transform.parent = gameObject.transform;
-            bomb.GetComponent<Bomb>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            bombs.Add(bomb.GetComponent<Bomb>());
+            bomb.GetComponent<BombStructure>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            bombs.Add(bomb.GetComponent<BombStructure>());
         }
 
         // SPAWN TRAP
