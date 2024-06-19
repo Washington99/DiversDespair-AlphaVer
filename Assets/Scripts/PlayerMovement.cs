@@ -120,10 +120,11 @@ public class PlayerMovement : MonoBehaviour
         gameManager.gameOver();
     }
 
-    public void ShieldPowerUp()
+    public IEnumerator ShieldPowerUp()
     {
         isShieldPresent = true;
-        Thread.Sleep(shieldDuration*1000);
+        yield return new WaitForSeconds(shieldDuration);
+        isShieldPresent = false;
     }
 
     public bool ShieldCheck()

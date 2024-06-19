@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ShieldPowerUp : MonoBehaviour
 {
-    [SerializeField] PlayerMovement player;
+    public float scrollSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,25 @@ public class ShieldPowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Code for moving across screen
+        transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        player.ShieldPowerUp();
+        PlayerMovement player = collider.GetComponent<PlayerMovement>();
+
+
+        if (player != null)
+        {
+            player.StartCoroutine("ShieldPowerUp");
+
+            // Disable the collider to prevent further collisions while it explodes 
+
+            // Explode animation
+
+            // Start the coroutine to destroy the bomb after the animation (no animation yet)
+        }
+
     }
 }
