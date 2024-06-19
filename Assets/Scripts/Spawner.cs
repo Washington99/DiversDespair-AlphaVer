@@ -7,26 +7,26 @@ using UnityEngine.UIElements;
 public class Spawner : MonoBehaviour
 {
 
-    [SerializeField] private BombStructure[] bombObject;
+    [SerializeField] private StructureManager[] bombObject;
     [SerializeField] private int initialBombsToSpawn;
 
 
-    [SerializeField] private Coin coinObject;
+    [SerializeField] private StructureManager[] coinObject;
     [SerializeField] private int initialCoinsToSpawn;
 
     [SerializeField] private Oxygen oxygenObject;
     [SerializeField] private int initialOxygenToSpawn;
 
-    [SerializeField] private Trap trapObject;
+    [SerializeField] private StructureManager[] trapObject;
     [SerializeField] private int initialTrapToSpawn;
     [SerializeField] private int collectibleSpawnRate;
     [SerializeField] private int spawnWidth;
     [SerializeField] private depthTracker dt;
 
-    private List<BombStructure> bombs;
-    private List<Coin> coins;
+    private List<StructureManager> bombs;
+    private List<StructureManager> coins;
     private List<Oxygen> oxygen;
-    private List<Trap> traps;
+    private List<StructureManager> traps;
 
     private float bombsToSpawn;
     private float trapToSpawn;
@@ -36,10 +36,10 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bombs = new List<BombStructure>();
-        coins = new List<Coin>();
+        bombs = new List<StructureManager>();
+        coins = new List<StructureManager>();
         oxygen = new List<Oxygen>();
-        traps = new List<Trap>();
+        traps = new List<StructureManager>();
         bombsToSpawn = initialBombsToSpawn;
         coinsToSpawn = initialCoinsToSpawn;
         trapToSpawn = initialTrapToSpawn;
@@ -74,22 +74,22 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             bomb.transform.parent = gameObject.transform;
-            bomb.GetComponent<BombStructure>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            bombs.Add(bomb.GetComponent<BombStructure>());
+            bomb.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            bombs.Add(bomb.GetComponent<StructureManager>());
         }
 
         // SPAWN TRAP
         if (spawnSeed < 8 && traps.Count < Mathf.Min(trapToSpawn,4)) {
             GameObject trap = Instantiate(
-                trapObject.gameObject, 
+                trapObject[Random.Range(0,1)].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
                 Quaternion.identity
                 );
 
             // Place Instantiated bomb inside spawner object
             trap.transform.parent = gameObject.transform;
-            trap.GetComponent<Trap>().scrollSpeed = -0.5f * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            traps.Add(trap.GetComponent<Trap>());
+            trap.GetComponent<StructureManager>().scrollSpeed = -0.5f * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            traps.Add(trap.GetComponent<StructureManager>());
         }
 
         // Remove all Destroyed bombs
@@ -104,15 +104,15 @@ public class Spawner : MonoBehaviour
         // SPAWN COIN
         if (coins.Count < Mathf.Min(coinsToSpawn,8) && spawnSeed > collectibleSpawnRate) {
             GameObject coin = Instantiate(
-                coinObject.gameObject, 
+                coinObject[Random.Range(0,2)].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
                 Quaternion.identity
                 );
 
             // Place Instantiated bomb inside spawner object
             coin.transform.parent = gameObject.transform;
-            coin.GetComponent<Coin>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            coins.Add(coin.GetComponent<Coin>());
+            coin.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            coins.Add(coin.GetComponent<StructureManager>());
         }
 
         // SPAWN OXYGEN

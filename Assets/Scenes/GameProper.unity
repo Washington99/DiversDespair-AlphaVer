@@ -1276,15 +1276,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombObject:
-  - {fileID: 1745486582615454592, guid: 38b8a25962803394595f5352cbd67439, type: 3}
-  - {fileID: 644528676306920553, guid: cb4949043cffad24683f873315957a4b, type: 3}
+  - {fileID: 1644829481375147452, guid: cb4949043cffad24683f873315957a4b, type: 3}
+  - {fileID: -5268508141969488803, guid: 38b8a25962803394595f5352cbd67439, type: 3}
   initialBombsToSpawn: 1
-  coinObject: {fileID: 3129830598565595640, guid: c6fb9608b3a86ff4baac001c7986489a, type: 3}
+  coinObject:
+  - {fileID: -1177129282996981805, guid: 482b21934457a7049b0ba9da605ddc41, type: 3}
+  - {fileID: 7759751891650961104, guid: 0423cb62227e1674791020b53a4eff48, type: 3}
   initialCoinsToSpawn: 3
   oxygenObject: {fileID: 8950224939291097783, guid: b4d64306c9ccea4408153fda60384593, type: 3}
   initialOxygenToSpawn: 5
-  trapObject: {fileID: 8438978384309579049, guid: 5ccb9c8aff9593640a9f430bbc843dca, type: 3}
-  initialTrapToSpawn: 2
+  trapObject:
+  - {fileID: -1634333894054888771, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
+  initialTrapToSpawn: 1
   collectibleSpawnRate: 4
   spawnWidth: 5
   dt: {fileID: 1871025084}
@@ -2390,63 +2393,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1543652773
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3158867221212329210, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_Name
-      value: Trap Structure
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106051424267056474, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
 --- !u!1 &1604549910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,4 +3236,3 @@ SceneRoots:
   - {fileID: 1762249526}
   - {fileID: 511305810}
   - {fileID: 2116319}
-  - {fileID: 1543652773}
