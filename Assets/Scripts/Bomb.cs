@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class Bomb : MonoBehaviour
 {
@@ -36,7 +37,10 @@ public class Bomb : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.explosion);
             // Drain stamina
-            player.TakeDamage(damageAmount);
+            if (player.ShieldCheck() == false)
+            {
+                player.TakeDamage(damageAmount);
+            }
 
             // Disable the collider to prevent further collisions while it explodes 
             myCollider.enabled = false;
