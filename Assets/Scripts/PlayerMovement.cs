@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 screenBounds;
     private float stamina;
+
+    public bool isShieldPresent = false;
+
+    // [SerializeField] private int shieldDuration;
     [SerializeField] private float maxStamina;
 
     [SerializeField] private float staminaDrain;
@@ -43,7 +48,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         ClampVelocity();
-        DrainStamina();
+        if (!isShieldPresent)
+        {
+            DrainStamina();
+        }
 
         if (stamina <= 0 && !isDead)
         {
@@ -83,8 +91,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        stamina -= damage;
-        staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        if (!isShieldPresent) {
+            stamina -= damage;
+            staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        }
     }
 
     public void HealStamina(float amount)
@@ -106,5 +116,16 @@ public class PlayerMovement : MonoBehaviour
         cm.SaveRunCoins();
         gameObject.SetActive(false);
         gameManager.gameOver();
+    }
+
+    public IEnumerator ShieldPowerUp(float shieldDuration)
+    {
+        isShieldPresent = true;
+        GetComponent<SpriteRenderer>().color = Color.green;
+        
+        yield return new WaitForSeconds(shieldDuration);
+
+        isShieldPresent = false;
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
