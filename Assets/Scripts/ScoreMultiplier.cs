@@ -24,6 +24,7 @@ public class ScoreMultiplier : MonoBehaviour
     
     public float scrollSpeed;
     private int scoreMultiplier;
+    [SerializeField] private int multiplierDuration;
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class ScoreMultiplier : MonoBehaviour
         PlayerMovement player = collider.GetComponent<PlayerMovement>();
             
         if (player != null) {
-            depthTracker.SetScoreMultiplier(scoreMultiplier);
+            depthTracker.SetScoreMultiplier(scoreMultiplier, multiplierDuration);
             Destroy(gameObject);
         }
     }
