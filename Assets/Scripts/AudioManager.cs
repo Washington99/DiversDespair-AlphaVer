@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip staminaReplenish;
     public AudioClip drownSound;
+    public AudioClip covenDrownSound;
 
     private void Start(){
         musicSource.clip = bgMusic;

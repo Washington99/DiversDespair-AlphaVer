@@ -159,6 +159,7 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: 4f5bc64a69b9741b49c08897fbf40c67, type: 3}
   staminaReplenish: {fileID: 8300000, guid: a0fbeb571ed114dc29e75de4226e56c5, type: 3}
   drownSound: {fileID: 8300000, guid: 1bae0ca7c4ecbc946891cb490749e0db, type: 3}
+  covenDrownSound: {fileID: 8300000, guid: 366a4849126749a4395819f6b4e77949, type: 3}
 --- !u!4 &2116319
 Transform:
   m_ObjectHideFlags: 0
@@ -1038,6 +1039,7 @@ MonoBehaviour:
   staminaBar: {fileID: 2091077276}
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
+  skinSelector: {fileID: 2105450055}
 --- !u!114 &408140804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,7 +2276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1044736392
 Transform:
   m_ObjectHideFlags: 0
@@ -2440,6 +2442,7 @@ MonoBehaviour:
   staminaBar: {fileID: 1366271082}
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
+  skinSelector: {fileID: 2105450055}
 --- !u!50 &1044736398
 Rigidbody2D:
   serializedVersion: 4
@@ -2534,7 +2537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1073955835
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2683,6 +2686,7 @@ MonoBehaviour:
   staminaBar: {fileID: 168534080}
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
+  skinSelector: {fileID: 2105450055}
 --- !u!50 &1073955840
 Rigidbody2D:
   serializedVersion: 4
@@ -3388,7 +3392,7 @@ RectTransform:
   m_Father: {fileID: 739622247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4279,7 +4283,7 @@ RectTransform:
   m_Father: {fileID: 1271342103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
