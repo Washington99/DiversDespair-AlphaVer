@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -8,6 +9,9 @@ public class depthTracker : MonoBehaviour
     //new
     // public GameObject depthTrackerUI;
     [SerializeField] TextMeshProUGUI counter;
+    
+    [SerializeField] CoinManager cm;
+
     public int points;
     float elapsedTime;
     private int scoreMultiplier;

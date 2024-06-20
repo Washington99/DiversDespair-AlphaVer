@@ -39,6 +39,6 @@ public class CoinManager : MonoBehaviour
 
     private void UpdateRunCoinText()
     {
-        runCoinText.text = ": " + runCoinCount.ToString();
+        runCoinText.text = " " + runCoinCount.ToString();
     }
 }
