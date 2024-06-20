@@ -1283,11 +1283,13 @@ MonoBehaviour:
   - {fileID: -1177129282996981805, guid: 482b21934457a7049b0ba9da605ddc41, type: 3}
   - {fileID: 7759751891650961104, guid: 0423cb62227e1674791020b53a4eff48, type: 3}
   initialCoinsToSpawn: 3
-  oxygenObject: {fileID: 8950224939291097783, guid: b4d64306c9ccea4408153fda60384593, type: 3}
-  initialOxygenToSpawn: 5
   trapObject:
   - {fileID: -1634333894054888771, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
   initialTrapToSpawn: 1
+  oxygenObject: {fileID: 8950224939291097783, guid: b4d64306c9ccea4408153fda60384593, type: 3}
+  initialOxygenToSpawn: 5
+  lightResetPowerup: {fileID: 171225496803912336, guid: 792a03164a54d3149bc4c4fc54d5f4ec, type: 3}
+  initialLightResetToSpawn: 0
   collectibleSpawnRate: 4
   spawnWidth: 5
   dt: {fileID: 1871025084}
