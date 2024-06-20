@@ -5,40 +5,87 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// problem: cannot change from transform to rectTransform if it is a prefab
+
 public class SkinItem : MonoBehaviour
 {
     public Sprite skin;
     
-    public int stars;       // 4- or 5-star skin
+    public int tier;        // Tier 1, 2 or 3
     public int cost = 0;
-    public string status;   // On Sale or Sold or Filler
-    public int index;
+    public string status;   // On Sale, Sold or Filler
+    public int index = 0;
+
+    private Button myButton;
+    private Image myImage;
+    private TextMeshProUGUI costText;
 
     void Start()
     {
-        Image myImage = gameObject.GetComponent<Image>();
-        myImage.sprite = skin;
+        Scene scene = SceneManager.GetActiveScene();
 
-        TextMeshProUGUI costText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        costText.text = "";
-
-        if (cost > 0)
+        if (scene.name.Equals("ShopScene"))
         {
-            if (cost < 100)
+            if (index == -1)
             {
-                costText.text = "0";
-            }
-            
-            if (cost < 10)
-            {
-                costText.text += "0";
+                myButton = gameObject.GetComponent<Button>();
+                myButton.onClick.AddListener(() => GoToSkinView());
+    
+                myImage = gameObject.GetComponent<Image>();
+                myImage.sprite = skin;
+    
+                costText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
             }
 
-            costText.text += cost.ToString();
+            if (cost > 0)
+                costText.text = cost.ToString();
+            else
+                costText.text = "";
         }
     }
 
-    public void GoToSkinView()
+    public void SetUpItem()
+    {
+        // set up rect transform
+        RectTransform rt = gameObject.AddComponent<RectTransform>();
+
+        // set up button
+        myButton = gameObject.AddComponent<Button>();
+        myButton.onClick.AddListener(() => GoToSkinView());
+
+        // set up image
+        myImage = gameObject.AddComponent<Image>();
+        myImage.sprite = skin;
+
+        // set up background of the cost UI
+        GameObject costUIBackground = new GameObject();
+        costUIBackground.name = "CostBG";
+        costUIBackground.transform.SetParent(gameObject.transform);
+
+        RectTransform bgRectTransform = costUIBackground.AddComponent<RectTransform>();
+        bgRectTransform.sizeDelta = new Vector2(56.25f, 20.0f);
+        bgRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -26.0f, 0.0f), Quaternion.identity);
+
+        Image bgColor = costUIBackground.AddComponent<Image>();
+        bgColor.color = new Color(0.5f, 0.5f, 0.5f, 0.95f);
+        
+        // set up the cost UI
+        GameObject costTextObj = new GameObject();
+        costTextObj.name = "CostText";
+        costTextObj.transform.SetParent(gameObject.transform);
+
+        RectTransform txtRectTransform = costTextObj.AddComponent<RectTransform>();
+        txtRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -26.0f, 0.0f), Quaternion.identity);
+
+        costText = costTextObj.AddComponent<TextMeshProUGUI>();
+        costText.fontStyle = FontStyles.Bold;
+        costText.fontSize = 16;
+        costText.color = Color.black;
+        costText.alignment = TextAlignmentOptions.Center;
+        costText.text = cost.ToString();
+    }
+
+    void GoToSkinView()
     {
         // SceneManager.LoadSceneAsync("SkinView");
         
