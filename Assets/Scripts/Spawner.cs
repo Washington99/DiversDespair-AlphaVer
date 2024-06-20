@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int spawnWidth;
     [SerializeField] private depthTracker dt;
 
+
     private List<StructureManager> bombs;
     private List<StructureManager> coins;
     private List<Oxygen> oxygen;
@@ -49,12 +50,12 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        depthScaling = Mathf.FloorToInt(dt.points/10);
+        depthScaling = Mathf.FloorToInt(dt.points/100);
         Debug.Log(depthScaling);
         bombsToSpawn = initialBombsToSpawn + depthScaling;
         coinsToSpawn = initialCoinsToSpawn + depthScaling;
-        trapToSpawn = initialTrapToSpawn + Mathf.FloorToInt(dt.points/50);    
-        oxygenToSpawn = initialOxygenToSpawn - Mathf.FloorToInt(dt.points/30);
+        trapToSpawn = initialTrapToSpawn + Mathf.FloorToInt(dt.points/500);    
+        oxygenToSpawn = initialOxygenToSpawn - Mathf.FloorToInt(dt.points/300);
         spawnHazard();
         spawnCollectible();
     }
@@ -74,7 +75,7 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             bomb.transform.parent = gameObject.transform;
-            bomb.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            bomb.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.001f;
             bombs.Add(bomb.GetComponent<StructureManager>());
         }
 
@@ -88,7 +89,7 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             trap.transform.parent = gameObject.transform;
-            trap.GetComponent<StructureManager>().scrollSpeed = -0.5f * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            trap.GetComponent<StructureManager>().scrollSpeed = -0.5f * Random.Range(0.7f,1.4f) - dt.points*0.001f;
             traps.Add(trap.GetComponent<StructureManager>());
         }
 
@@ -111,7 +112,7 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             coin.transform.parent = gameObject.transform;
-            coin.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            coin.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.001f;
             coins.Add(coin.GetComponent<StructureManager>());
         }
 
@@ -125,7 +126,7 @@ public class Spawner : MonoBehaviour
 
             // Place Instantiated bomb inside spawner object
             o2.transform.parent = gameObject.transform;
-            o2.GetComponent<Oxygen>().scrollSpeed = -3 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
+            o2.GetComponent<Oxygen>().scrollSpeed = -3 * Random.Range(0.7f,1.4f) - dt.points*0.001f;
             oxygen.Add(o2.GetComponent<Oxygen>());
         }
 
