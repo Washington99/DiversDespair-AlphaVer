@@ -180,9 +180,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7f7f7afb4e43d4e49972e2477362871e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.27
+  m_Volume: 0.049
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73926c8c4b9f89489fd1e7506099498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSkinIndex: 2
+  currentSkinIndex: 1
   skinModels:
   - {fileID: 2081841276}
   - {fileID: 1182265364}
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22e7948ea4b24f4fb6c67de4a8e9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinIndex: 2
+  skinManager: {fileID: 1212545733}
 --- !u!4 &1705399284
 Transform:
   m_ObjectHideFlags: 0
@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skins: {fileID: 2140540880}
-  skinIndex: 2
+  skinManager: {fileID: 1212545733}
 --- !u!4 &1993785442
 Transform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ MonoBehaviour:
   skins: {fileID: 2140540880}
   buy: {fileID: 538194510}
   equip: {fileID: 376996988}
-  skinIndex: 2
+  skinManager: {fileID: 1212545733}
 --- !u!4 &2109457523
 Transform:
   m_ObjectHideFlags: 0
