@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
     void FixedUpdate()
     {
         depthScaling = Mathf.FloorToInt(dt.points/10);
-        Debug.Log(depthScaling);
+        //Debug.Log(depthScaling);
         bombsToSpawn = initialBombsToSpawn + depthScaling;
         coinsToSpawn = initialCoinsToSpawn + depthScaling;
         trapToSpawn = initialTrapToSpawn + Mathf.FloorToInt(dt.points/50);    
