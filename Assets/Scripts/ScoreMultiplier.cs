@@ -22,19 +22,21 @@ public class ScoreMultiplier : MonoBehaviour
     depthTracker depthTracker;
     AudioManager audioManager;
     
-    public float scrollSpeed;
-    private int scoreMultiplier;
+    [SerializeField] private float scrollSpeed;
     [SerializeField] private int multiplierDuration;
+    private int scoreMultiplier;
+
+    [SerializeField] Sprite scoreMultiplier3X;
 
     private void Awake()
     {
-        depthTracker = (depthTracker) GameObject.FindObjectOfType(typeof(depthTracker));  
+        depthTracker = (depthTracker) FindObjectOfType(typeof(depthTracker));  
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
     {
-        if (depthTracker.points * 10 < 1000)
+        if (depthTracker.points * 10 < 100)
             scoreMultiplier = 2;
         
         else
@@ -52,6 +54,11 @@ public class ScoreMultiplier : MonoBehaviour
                 // remaining 30% chance to become times 3 multiplier
                 scoreMultiplier = 3;
             }
+        }
+
+        if (scoreMultiplier == 3) {
+            GetComponent<SpriteRenderer>().sprite = scoreMultiplier3X;
+            GetComponent<SpriteRenderer>().color = Color.blue;
         }
     }
 

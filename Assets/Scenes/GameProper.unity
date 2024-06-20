@@ -1291,6 +1291,10 @@ MonoBehaviour:
   initialOxygenToSpawn: 5
   lightResetPowerup: {fileID: 171225496803912336, guid: 792a03164a54d3149bc4c4fc54d5f4ec, type: 3}
   initialLightResetToSpawn: 0
+  shieldPowerup: {fileID: 9181183333305457398, guid: c6d9d5de9d8a48545be3da64873aedf3, type: 3}
+  initialShieldToSpawn: 0
+  scoreMultiplierPowerup: {fileID: 8819470596640944282, guid: 7588bbf313d4cc24a90e50a6da51155a, type: 3}
+  initialScoreMultiplierToSpawn: 0
   collectibleSpawnRate: 4
   spawnWidth: 5
   dt: {fileID: 1871025084}

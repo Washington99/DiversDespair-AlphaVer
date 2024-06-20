@@ -24,7 +24,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int initialLightResetToSpawn;
 
     [SerializeField] private ShieldPowerUp shieldPowerup;
-    [SerializeField] private int initialshieldPowerupToSpawn;
+    [SerializeField] private int initialShieldToSpawn;
+
+    [SerializeField] private ScoreMultiplier scoreMultiplierPowerup;
+    [SerializeField] private int initialScoreMultiplierToSpawn;
 
     [SerializeField] private int collectibleSpawnRate;
     [SerializeField] private int spawnWidth;
@@ -41,7 +44,8 @@ public class Spawner : MonoBehaviour
     private float oxygenSpawnTime;
     private float coinSpawnTime;
     private float lightResetSpawnTime;
-    private float shieldPowerupSpawnTime;
+    private float shieldSpawnTime;
+    private float scoreMultiplierSpawnTime;
 
     private int depthScaling;
     // Start is called before the first frame update
@@ -56,7 +60,8 @@ public class Spawner : MonoBehaviour
         trapSpawnTime = 15;
         oxygenSpawnTime = 1;
         lightResetSpawnTime = 10;
-        shieldPowerupSpawnTime = 1;
+        shieldSpawnTime = 1;
+        scoreMultiplierSpawnTime = 1;
     }
 
 
@@ -74,7 +79,8 @@ public class Spawner : MonoBehaviour
         coinSpawnTime -= Time.fixedDeltaTime;
         trapSpawnTime -= Time.fixedDeltaTime;
         lightResetSpawnTime -= Time.fixedDeltaTime;
-        shieldPowerupSpawnTime -= Time.fixedDeltaTime;
+        shieldSpawnTime -= Time.fixedDeltaTime;
+        scoreMultiplierSpawnTime -= Time.fixedDeltaTime;
 
         if (oxygenSpawnTime <= 0) {
             SpawnOxygen();
@@ -100,9 +106,13 @@ public class Spawner : MonoBehaviour
             SpawnLightReset();
             lightResetSpawnTime = Random.Range(10, 15);
         }
-        if (shieldPowerupSpawnTime <= 0) {
-            SpawnShieldPowerup();
-            shieldPowerupSpawnTime = Random.Range(10, 15);
+        if (shieldSpawnTime <= 0) {
+            SpawnShield();
+            shieldSpawnTime = Random.Range(10, 15);
+        }
+        if (scoreMultiplierSpawnTime <= 0) {
+            SpawnScoreMultiplier();
+            scoreMultiplierSpawnTime = Random.Range(10, 15);
         }
 
         if (depthScaling > 100) {
@@ -233,7 +243,7 @@ public class Spawner : MonoBehaviour
         ***/
     }
 
-    void SpawnShieldPowerup () 
+    void SpawnShield () 
     {
         GameObject shield = Instantiate(
                 shieldPowerup.gameObject, 
@@ -243,5 +253,16 @@ public class Spawner : MonoBehaviour
 
         // Place Instantiated bomb inside spawner object
         shield.transform.parent = gameObject.transform;
+    }
+    void SpawnScoreMultiplier () 
+    {
+        GameObject scoreMultiplier = Instantiate(
+                scoreMultiplierPowerup.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+        // Place Instantiated bomb inside spawner object
+        scoreMultiplier.transform.parent = gameObject.transform;
     }
 }
