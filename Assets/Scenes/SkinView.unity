@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73926c8c4b9f89489fd1e7506099498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSkinIndex: 4
+  currentSkinIndex: 5
   skinModels:
   - {fileID: 2081841276}
   - {fileID: 1182265364}
