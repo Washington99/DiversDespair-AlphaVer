@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 1073955836}
   - component: {fileID: 1073955835}
   m_Layer: 0
-  m_Name: Angel
+  m_Name: Coven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2640,9 +2640,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073955834}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a95540693cabe3645b35618a3b10b98c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c142c335c29a05744a9e7ad9a543e353, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

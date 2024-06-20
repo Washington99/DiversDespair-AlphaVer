@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 1182265367}
   - component: {fileID: 1182265366}
   m_Layer: 5
-  m_Name: Angel
+  m_Name: Coven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
