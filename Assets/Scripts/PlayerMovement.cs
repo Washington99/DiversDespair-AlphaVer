@@ -128,4 +128,12 @@ public class PlayerMovement : MonoBehaviour
         isShieldPresent = false;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
+    public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        
+        yield return new WaitForSeconds(scoreMultiplierDuration);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }

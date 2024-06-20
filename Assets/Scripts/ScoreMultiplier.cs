@@ -72,6 +72,7 @@ public class ScoreMultiplier : MonoBehaviour
         PlayerMovement player = collider.GetComponent<PlayerMovement>();
             
         if (player != null) {
+            player.StartCoroutine("ScoreMultiplierPowerUp", multiplierDuration);
             depthTracker.SetScoreMultiplier(scoreMultiplier, multiplierDuration);
             Destroy(gameObject);
         }
