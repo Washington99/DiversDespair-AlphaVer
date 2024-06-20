@@ -23,10 +23,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int spawnWidth;
     [SerializeField] private depthTracker dt;
 
-    private List<StructureManager> bombs;
-    private List<StructureManager> coins;
+    private List<GameObject> bombs;
+    private List<GameObject> coins;
     private List<Oxygen> oxygen;
-    private List<StructureManager> traps;
+    private List<GameObject> traps;
 
     private float bombsToSpawn;
     private float trapToSpawn;
@@ -36,10 +36,10 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bombs = new List<StructureManager>();
-        coins = new List<StructureManager>();
+        bombs = new List<GameObject>();
+        coins = new List<GameObject>();
         oxygen = new List<Oxygen>();
-        traps = new List<StructureManager>();
+        traps = new List<GameObject>();
         bombsToSpawn = initialBombsToSpawn;
         coinsToSpawn = initialCoinsToSpawn;
         trapToSpawn = initialTrapToSpawn;
@@ -49,12 +49,11 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        depthScaling = Mathf.FloorToInt(dt.points/10);
-        //Debug.Log(depthScaling);
-        bombsToSpawn = initialBombsToSpawn + depthScaling;
-        coinsToSpawn = initialCoinsToSpawn + depthScaling;
-        trapToSpawn = initialTrapToSpawn + Mathf.FloorToInt(dt.points/50);    
-        oxygenToSpawn = initialOxygenToSpawn - Mathf.FloorToInt(dt.points/30);
+        // depthScaling = dt.points % 200;
+        // bombsToSpawn = initialBombsToSpawn + Mathf.FloorToInt(dt.points / 20);
+        // coinsToSpawn = initialCoinsToSpawn + depthScaling;
+        // trapToSpawn = initialTrapToSpawn + Mathf.FloorToInt(dt.points/50);    
+        // oxygenToSpawn = initialOxygenToSpawn - Mathf.FloorToInt(dt.points/30);
         spawnHazard();
         spawnCollectible();
     }
@@ -75,7 +74,8 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             bomb.transform.parent = gameObject.transform;
             bomb.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            bombs.Add(bomb.GetComponent<StructureManager>());
+            bombs.Add(bomb);
+            
         }
 
         // SPAWN TRAP
@@ -89,7 +89,7 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             trap.transform.parent = gameObject.transform;
             trap.GetComponent<StructureManager>().scrollSpeed = -0.5f * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            traps.Add(trap.GetComponent<StructureManager>());
+            traps.Add(trap);
         }
 
         // Remove all Destroyed bombs
@@ -102,7 +102,7 @@ public class Spawner : MonoBehaviour
         float spawnSeed = Random.Range(0, 10);
 
         // SPAWN COIN
-        if (coins.Count < Mathf.Min(coinsToSpawn,8) && spawnSeed > collectibleSpawnRate) {
+        if (coins.Count < Mathf.Min(coinsToSpawn, 8) && spawnSeed > collectibleSpawnRate) {
             GameObject coin = Instantiate(
                 coinObject[Random.Range(0,2)].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
@@ -112,7 +112,7 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             coin.transform.parent = gameObject.transform;
             coin.GetComponent<StructureManager>().scrollSpeed = -1 * Random.Range(0.7f,1.4f) - dt.points*0.01f;
-            coins.Add(coin.GetComponent<StructureManager>());
+            coins.Add(coin);
         }
 
         // SPAWN OXYGEN

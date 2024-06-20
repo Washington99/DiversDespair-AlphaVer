@@ -16,5 +16,9 @@ public class StructureManager : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
+
+        if (transform.position.y > 6) {
+            Destroy(gameObject);
+        }
     }
 }

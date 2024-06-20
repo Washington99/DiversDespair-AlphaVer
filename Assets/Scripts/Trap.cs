@@ -40,8 +40,4 @@ public class Trap : MonoBehaviour
               
         }
     }
-
-    void OnBecameInvisible() {
-        Destroy(gameObject);
-    }
 }
