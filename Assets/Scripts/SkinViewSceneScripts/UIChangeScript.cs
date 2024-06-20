@@ -20,7 +20,7 @@ public class UIChangeScript : MonoBehaviour
         
     }
 
-    void skinCheck()
+    public void skinCheck()
     {
         if (skins.CheckSkins(1))
         {
