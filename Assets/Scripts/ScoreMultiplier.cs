@@ -19,13 +19,15 @@ by this score multiplier that is in effect for 25 seconds
 
 public class ScoreMultiplier : MonoBehaviour
 {
-    [SerializeField] depthTracker depthTracker;
+    depthTracker depthTracker;
     AudioManager audioManager;
     
     public float scrollSpeed;
     private int scoreMultiplier;
 
-    private void Awake(){
+    private void Awake()
+    {
+        depthTracker = (depthTracker) GameObject.FindObjectOfType(typeof(depthTracker));  
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 

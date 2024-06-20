@@ -1906,10 +1906,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8819470596640944282, guid: 7588bbf313d4cc24a90e50a6da51155a, type: 3}
-      propertyPath: depthTracker
-      value: 
-      objectReference: {fileID: 2099932033}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
