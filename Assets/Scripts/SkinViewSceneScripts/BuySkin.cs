@@ -8,7 +8,7 @@ public class BuySkin : MonoBehaviour
     // Start is called before the first frame update
     private const string TotalCoinsKey = "TotalCoins";
     public SkinsOwned skins;
-    public int skinIndex;
+    public SkinManager skinManager;
 
     void Start()
     {
@@ -27,6 +27,6 @@ public class BuySkin : MonoBehaviour
         PlayerPrefs.SetInt(TotalCoinsKey, totalCoins);
         PlayerPrefs.Save();
 
-        skins.AddSkins(skinIndex);
+        skins.AddSkins(skinManager.currentSkinIndex);
     }
 }

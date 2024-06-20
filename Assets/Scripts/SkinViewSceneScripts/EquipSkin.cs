@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EquipSkin : MonoBehaviour
 {
-    public int skinIndex;
+    public SkinManager skinManager;
 
     // This function should be called when the equip button is pressed
     public void EquipSelectedSkin()
     {
-        PlayerPrefs.SetInt("SelectedSkin", skinIndex);
+        PlayerPrefs.SetInt("SelectedSkin", skinManager.currentSkinIndex);
         PlayerPrefs.Save();
-        Debug.Log("Skin " + skinIndex + " equipped.");
+        Debug.Log("Skin " + skinManager.currentSkinIndex + " equipped.");
     }
 }

@@ -8,6 +8,7 @@ public class UIChangeScript : MonoBehaviour
     public SkinsOwned skins;
     public GameObject buy;
     public GameObject equip;
+    public SkinManager skinManager;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class UIChangeScript : MonoBehaviour
 
     public void skinCheck()
     {
-        if (skins.CheckSkins(1))
+        if (skins.CheckSkins(skinManager.currentSkinIndex))
         {
             buy.SetActive(false); 
             equip.SetActive(true);
