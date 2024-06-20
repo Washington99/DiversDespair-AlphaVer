@@ -1,26 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SkinItem : MonoBehaviour
 {
     public Sprite skin;
     
     public int stars;       // 4- or 5-star skin
-    public int cost;
+    public int cost = 0;
     public string status;   // On Sale or Sold or Filler
+    public int index;
 
     void Start()
     {
-        SpriteRenderer mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        mySpriteRenderer.sprite = skin;
+        Image myImage = gameObject.GetComponent<Image>();
+        myImage.sprite = skin;
 
-        status = "On Sale";
+        TextMeshProUGUI costText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        costText.text = "";
+
+        if (cost > 0)
+        {
+            if (cost < 100)
+            {
+                costText.text = "0";
+            }
+            
+            if (cost < 10)
+            {
+                costText.text += "0";
+            }
+
+            costText.text += cost.ToString();
+        }
     }
 
-    public void GoToNewView(SkinItem item)
+    public void GoToSkinView()
     {
-        // SceneManager.LoadScene(whatever the scene name is);
+        // SceneManager.LoadSceneAsync("SkinView");
+        
+        if(index == -1)
+            Debug.Log("A filler was pressed");
+        else
+            Debug.Log("Skin Item " + index + " got pressed");
     }
 }
