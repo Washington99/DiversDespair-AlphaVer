@@ -6,6 +6,7 @@ public class SkinManager : MonoBehaviour
 {
     public int currentSkinIndex;
     public GameObject[] skinModels;
+    private Animator myAnimator;
 
     void Start()
     {
@@ -18,6 +19,5 @@ public class SkinManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

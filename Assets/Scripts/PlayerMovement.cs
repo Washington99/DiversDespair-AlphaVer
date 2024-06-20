@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public CoinManager cm;
 
     private Animator myAnimator;
+
+    public SkinSelector skinSelector;
+
     private AudioManager audioManager;
 
     private void Awake()
@@ -57,7 +60,22 @@ public class PlayerMovement : MonoBehaviour
         {
             isDead = true;
             myAnimator.SetTrigger("death");
-            audioManager.PlaySFX(audioManager.drownSound);
+            if (skinSelector.currentSkinIndex == 1)
+            {
+                audioManager.PlaySFX(audioManager.covenDrownSound);
+            }
+            if (skinSelector.currentSkinIndex == 2)
+            {
+                audioManager.PlaySFX(audioManager.clownDrownSound);
+            }
+            if (skinSelector.currentSkinIndex == 3)
+            {
+                audioManager.PlaySFX(audioManager.freminetDrownSound);
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.drownSound);
+            }
             StartCoroutine(DestroyAfterDeath());
         }
     }
