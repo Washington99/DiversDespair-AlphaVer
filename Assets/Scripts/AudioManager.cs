@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip drownSound;
     public AudioClip covenDrownSound;
     public AudioClip clownDrownSound;
+    public AudioClip freminetDrownSound;
 
     private void Start(){
         musicSource.clip = bgMusic;

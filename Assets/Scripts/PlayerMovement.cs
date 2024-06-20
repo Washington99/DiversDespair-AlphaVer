@@ -60,6 +60,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 audioManager.PlaySFX(audioManager.clownDrownSound);
             }
+            if (skinSelector.currentSkinIndex == 3)
+            {
+                audioManager.PlaySFX(audioManager.freminetDrownSound);
+            }
             else
             {
                 audioManager.PlaySFX(audioManager.drownSound);
