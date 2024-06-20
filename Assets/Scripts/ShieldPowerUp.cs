@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 public class ShieldPowerUp : MonoBehaviour
 {
-    public float scrollSpeed;
+    [SerializeField] private float shieldDuration;
+    [SerializeField] private float scrollSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,9 @@ public class ShieldPowerUp : MonoBehaviour
 
         if (player != null)
         {
-            player.StartCoroutine("ShieldPowerUp");
+            player.StartCoroutine("ShieldPowerUp", shieldDuration);
+
+            Destroy(gameObject);
 
             // Disable the collider to prevent further collisions while it explodes 
 

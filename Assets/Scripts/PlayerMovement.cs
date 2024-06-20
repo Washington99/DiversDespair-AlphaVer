@@ -10,10 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 screenBounds;
     private float stamina;
-    [SerializeField] private bool isShieldPresent = false;
-    [SerializeField] private int shieldDuration = 3;
+
+    public bool isShieldPresent = false;
+
+    // [SerializeField] private int shieldDuration;
     [SerializeField] private float maxStamina;
-    
     [SerializeField] private float staminaDrain;
     [SerializeField] PlayerStamina staminaBar;
 
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         ClampVelocity();
-        if (isShieldPresent == false)
+        if (!isShieldPresent)
         {
             DrainStamina();
         }
@@ -94,8 +95,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        stamina -= damage;
-        staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        if (!isShieldPresent) {
+            stamina -= damage;
+            staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        }
     }
 
     public void HealStamina(float amount)
@@ -120,15 +123,14 @@ public class PlayerMovement : MonoBehaviour
         gameManager.gameOver();
     }
 
-    public IEnumerator ShieldPowerUp()
+    public IEnumerator ShieldPowerUp(float shieldDuration)
     {
         isShieldPresent = true;
+        GetComponent<SpriteRenderer>().color = Color.green;
+        
         yield return new WaitForSeconds(shieldDuration);
-        isShieldPresent = false;
-    }
 
-    public bool ShieldCheck()
-    {
-        return isShieldPresent;
+        isShieldPresent = false;
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

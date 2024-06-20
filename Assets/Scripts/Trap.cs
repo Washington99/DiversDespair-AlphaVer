@@ -32,12 +32,11 @@ public class Trap : MonoBehaviour
             
         if (player != null) {
 
-            // Drain stamina
+            
             audioManager.PlaySFX(audioManager.death);
-            if (player.ShieldCheck() == false)
-            {
-                player.TakeDamage(damageAmount);
-            }
+
+            // Drain stamina
+            player.TakeDamage(damageAmount);
 
             Destroy(gameObject);
               
