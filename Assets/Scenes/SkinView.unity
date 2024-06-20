@@ -546,9 +546,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2109457522}
-        m_TargetAssemblyTypeName: UIChangeScript, Assembly-CSharp
-        m_MethodName: skinCheck
+      - m_Target: {fileID: 1472877910}
+        m_TargetAssemblyTypeName: BackToShop, Assembly-CSharp
+        m_MethodName: BackToShopScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2128,7 +2128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e744ca02b369484aaaa5c103d51e778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinOwned: 0
   skinsOwned: 
 --- !u!4 &2140540881
 Transform:

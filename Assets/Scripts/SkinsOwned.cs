@@ -1,38 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkinsOwned : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public bool skinOwned;
-    public List <int> skinsOwned = new List<int>();
+    public List<int> skinsOwned = new List<int>();
+
+    private const string SkinsOwnedKey = "SkinsOwned";
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        LoadSkins();
     }
 
     public bool CheckSkins(int skinIndex)
     {
-        skinOwned = false;
-        foreach (int skin in skinsOwned)
-        {
-            if (skin == skinIndex)
-                skinOwned = true;
-        }
-        return skinOwned;
+        return skinsOwned.Contains(skinIndex);
     }
 
     public void AddSkins(int skinIndex)
     {
-        skinsOwned.Add(skinIndex);
+        if (!skinsOwned.Contains(skinIndex))
+        {
+            skinsOwned.Add(skinIndex);
+            SaveSkins();
+        }
+    }
+
+    private void SaveSkins()
+    {
+        // Convert the list to a comma-separated string
+        string skinsString = string.Join(",", skinsOwned);
+        PlayerPrefs.SetString(SkinsOwnedKey, skinsString);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadSkins()
+    {
+        // Load the comma-separated string from PlayerPrefs
+        string skinsString = PlayerPrefs.GetString(SkinsOwnedKey, "");
+
+        // If the string is not empty, convert it back to a list
+        if (!string.IsNullOrEmpty(skinsString))
+        {
+            string[] skinsArray = skinsString.Split(',');
+            skinsOwned = new List<int>();
+            foreach (string skin in skinsArray)
+            {
+                if (int.TryParse(skin, out int skinIndex))
+                {
+                    skinsOwned.Add(skinIndex);
+                }
+            }
+        }
     }
 }
