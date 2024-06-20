@@ -1277,14 +1277,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombObject:
-  - {fileID: 1644829481375147452, guid: cb4949043cffad24683f873315957a4b, type: 3}
+  - {fileID: -4365344345330842340, guid: 5d0c4704d1ba4ef458ee119ad52a142d, type: 3}
   - {fileID: -5268508141969488803, guid: 38b8a25962803394595f5352cbd67439, type: 3}
+  - {fileID: 1644829481375147452, guid: cb4949043cffad24683f873315957a4b, type: 3}
   initialBombsToSpawn: 1
   coinObject:
   - {fileID: -1177129282996981805, guid: 482b21934457a7049b0ba9da605ddc41, type: 3}
   - {fileID: 7759751891650961104, guid: 0423cb62227e1674791020b53a4eff48, type: 3}
   initialCoinsToSpawn: 3
   trapObject:
+  - {fileID: 8919643388827144961, guid: 5ccb9c8aff9593640a9f430bbc843dca, type: 3}
   - {fileID: -1634333894054888771, guid: 6fd3b50fe98685545b1193f3f707e004, type: 3}
   initialTrapToSpawn: 1
   oxygenObject: {fileID: 8950224939291097783, guid: b4d64306c9ccea4408153fda60384593, type: 3}

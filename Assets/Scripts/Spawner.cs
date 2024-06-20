@@ -126,7 +126,7 @@ public class Spawner : MonoBehaviour
         float spawnSeed = Random.Range(0, 10);
 
         GameObject bomb = Instantiate(
-            bombObject[Random.Range(0,2)].gameObject, 
+            bombObject[Random.Range(0, bombObject.Length)].gameObject, 
             transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
             Quaternion.identity
             );
@@ -167,7 +167,7 @@ public class Spawner : MonoBehaviour
     void SpawnTrap () 
     {
         GameObject trap = Instantiate(
-                trapObject[Random.Range(0,1)].gameObject, 
+                trapObject[Random.Range(0, trapObject.Length)].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
                 Quaternion.identity
                 );

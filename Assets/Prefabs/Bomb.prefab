@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8992291016484102843}
   - component: {fileID: 1575984857110539058}
   - component: {fileID: 1139476762325039663}
+  - component: {fileID: -4365344345330842340}
   - component: {fileID: 4194424847848024083}
   m_Layer: 0
   m_Name: Bomb
@@ -135,6 +136,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 0
+--- !u!114 &-4365344345330842340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372257650467762442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a841d9a8caedd444868abd6e1a7767f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: -2
 --- !u!95 &4194424847848024083
 Animator:
   serializedVersion: 5
