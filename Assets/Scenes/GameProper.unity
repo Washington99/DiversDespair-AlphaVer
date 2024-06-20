@@ -3799,6 +3799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1604549910}
   player: {fileID: 408140799}
+  cm: {fileID: 0}
   currentScore: {fileID: 26165030}
   finalScore: {fileID: 2092284517}
 --- !u!4 &1762249526
@@ -3935,6 +3936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 26165030}
+  cm: {fileID: 511305809}
   points: 0
 --- !u!1 &1904283539
 GameObject:
