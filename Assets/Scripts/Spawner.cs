@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private LightResetter lightResetPowerup;
     [SerializeField] private int initialLightResetToSpawn;
 
+    [SerializeField] private ShieldPowerUp shieldPowerup;
+    [SerializeField] private int initialshieldPowerupToSpawn;
 
     [SerializeField] private int collectibleSpawnRate;
     [SerializeField] private int spawnWidth;
@@ -39,6 +41,7 @@ public class Spawner : MonoBehaviour
     private float oxygenSpawnTime;
     private float coinSpawnTime;
     private float lightResetSpawnTime;
+    private float shieldPowerupSpawnTime;
 
     private int depthScaling;
     // Start is called before the first frame update
@@ -53,6 +56,7 @@ public class Spawner : MonoBehaviour
         trapSpawnTime = 15;
         oxygenSpawnTime = 1;
         lightResetSpawnTime = 10;
+        shieldPowerupSpawnTime = 1;
     }
 
 
@@ -70,6 +74,7 @@ public class Spawner : MonoBehaviour
         coinSpawnTime -= Time.fixedDeltaTime;
         trapSpawnTime -= Time.fixedDeltaTime;
         lightResetSpawnTime -= Time.fixedDeltaTime;
+        shieldPowerupSpawnTime -= Time.fixedDeltaTime;
 
         if (oxygenSpawnTime <= 0) {
             SpawnOxygen();
@@ -95,7 +100,10 @@ public class Spawner : MonoBehaviour
             SpawnLightReset();
             lightResetSpawnTime = Random.Range(10, 15);
         }
-            
+        if (shieldPowerupSpawnTime <= 0) {
+            SpawnShieldPowerup();
+            shieldPowerupSpawnTime = Random.Range(10, 15);
+        }
 
         if (depthScaling > 100) {
             
@@ -223,5 +231,17 @@ public class Spawner : MonoBehaviour
         // coins.RemoveAll(GameObject => GameObject == null);
         // oxygen.RemoveAll(GameObject => GameObject == null);
         ***/
+    }
+
+    void SpawnShieldPowerup () 
+    {
+        GameObject shield = Instantiate(
+                shieldPowerup.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+        // Place Instantiated bomb inside spawner object
+        shield.transform.parent = gameObject.transform;
     }
 }
