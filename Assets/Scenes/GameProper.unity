@@ -154,7 +154,7 @@ MonoBehaviour:
   musicSource: {fileID: 778954671}
   sfxSource: {fileID: 13988217}
   bgMusic: {fileID: 8300000, guid: 2ccc481475ec7e54c83a6db01256dace, type: 3}
-  coinCollect: {fileID: 8300000, guid: af2435b78ba5d44beab25e91ad49efb7, type: 3}
+  coinCollect: {fileID: 8300000, guid: 17faa88c51261064f873d550036fe9d9, type: 3}
   explosion: {fileID: 8300000, guid: 39d95322e08d84fc88a217e689779f38, type: 3}
   death: {fileID: 8300000, guid: 4f5bc64a69b9741b49c08897fbf40c67, type: 3}
   staminaReplenish: {fileID: 8300000, guid: a0fbeb571ed114dc29e75de4226e56c5, type: 3}
@@ -162,6 +162,9 @@ MonoBehaviour:
   covenDrownSound: {fileID: 8300000, guid: 366a4849126749a4395819f6b4e77949, type: 3}
   clownDrownSound: {fileID: 8300000, guid: 8daf2de05d2d03b4eb8d5a1ad960a75c, type: 3}
   freminetDrownSound: {fileID: 8300000, guid: d8d9b047f6424594d82917ca63d5971b, type: 3}
+  ScoreMultiplier: {fileID: 8300000, guid: 8b75f3840ebac2a4fa1fa6d960b36d3d, type: 3}
+  LightResetter: {fileID: 8300000, guid: a5fbe4ff0d87bbd45be610ed12dbb871, type: 3}
+  ImmunityShield: {fileID: 8300000, guid: 330d9093b583fa140884003b056ef901, type: 3}
 --- !u!4 &2116319
 Transform:
   m_ObjectHideFlags: 0
