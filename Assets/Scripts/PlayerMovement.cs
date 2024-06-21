@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public ShieldMovement shield;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -143,12 +145,12 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator ShieldPowerUp(float shieldDuration)
     {
         isShieldPresent = true;
-        GetComponent<SpriteRenderer>().color = Color.green;
+        shield.ShieldOn();
         
         yield return new WaitForSeconds(shieldDuration);
 
         isShieldPresent = false;
-        GetComponent<SpriteRenderer>().color = spriteColor;
+        shield.ShieldOff();
     }
     public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
     {

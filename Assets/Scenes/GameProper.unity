@@ -1444,6 +1444,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!114 &408140804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3789,6 +3790,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1044736398
 Rigidbody2D:
   serializedVersion: 4
@@ -4034,6 +4036,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1073955840
 Rigidbody2D:
   serializedVersion: 4
@@ -5019,6 +5022,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1290557686
 Rigidbody2D:
   serializedVersion: 4
@@ -5377,7 +5381,7 @@ Transform:
   m_Children:
   - {fileID: 2117594716}
   - {fileID: 705140577}
-  m_Father: {fileID: 2105450054}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1386831587
 MonoBehaviour:
@@ -5394,7 +5398,6 @@ MonoBehaviour:
   speed: 5
   isShieldPresent: 0
   gameManager: {fileID: 1762249525}
-  skinSelector: {fileID: 2105450055}
 --- !u!212 &1386831589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5921,6 +5924,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1580173798
 Rigidbody2D:
   serializedVersion: 4
@@ -6906,6 +6910,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1860883068
 Rigidbody2D:
   serializedVersion: 4
@@ -7720,6 +7725,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &1939519454
 Rigidbody2D:
   serializedVersion: 4
@@ -8336,6 +8342,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  shield: {fileID: 1386831587}
 --- !u!50 &2066756963
 Rigidbody2D:
   serializedVersion: 4
@@ -8845,7 +8852,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1386831586}
   - {fileID: 408140800}
   - {fileID: 1073955842}
   - {fileID: 1580173792}
@@ -9126,4 +9132,5 @@ SceneRoots:
   - {fileID: 1762249526}
   - {fileID: 511305810}
   - {fileID: 2116319}
+  - {fileID: 1386831586}
   - {fileID: 2105450054}

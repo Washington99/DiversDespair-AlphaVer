@@ -20,25 +20,17 @@ public class ShieldMovement : MonoBehaviour
 
     public GameManagerScript gameManager;
 
-    private Animator myAnimator;
-
-    public SkinSelector skinSelector;
-
-    private AudioManager audioManager;
-
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         maxSpeed = speed;
 
-
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
     {
-        myAnimator = GetComponent<Animator>();
+        GetComponent<SpriteRenderer>().enabled = false;
         spriteColor = GetComponent<SpriteRenderer>().color;
     }
 
@@ -46,10 +38,6 @@ public class ShieldMovement : MonoBehaviour
     {
         Move();
         ClampVelocity();
-        if (!isShieldPresent)
-        {
-        }
-
     }
 
     private void Move()
@@ -73,14 +61,15 @@ public class ShieldMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, -maxSpeed / 2);
     }
 
-    public IEnumerator ShieldPowerUp(float shieldDuration)
+    public void ShieldOn()
     {
-        isShieldPresent = true;
-        GetComponent<SpriteRenderer>().color = Color.green;
+        Debug.Log("Shield On");
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
 
-        yield return new WaitForSeconds(shieldDuration);
-
-        isShieldPresent = false;
-        GetComponent<SpriteRenderer>().color = spriteColor;
+    public void ShieldOff()
+    {
+        Debug.Log("Shield Off");
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }
