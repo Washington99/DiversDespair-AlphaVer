@@ -9,7 +9,7 @@ public class SkinSelector : MonoBehaviour
 
     void Start()
     {
-        currentSkinIndex = PlayerPrefs.GetInt("SelectedSkin", 1);
+        currentSkinIndex = PlayerPrefs.GetInt("EquippedSkin", 1);
         foreach (GameObject skin in skins)
             skin.SetActive(false);
 

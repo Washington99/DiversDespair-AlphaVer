@@ -9,7 +9,7 @@ public class EquipSkin : MonoBehaviour
     // This function should be called when the equip button is pressed
     public void EquipSelectedSkin()
     {
-        PlayerPrefs.SetInt("SelectedSkin", skinManager.currentSkinIndex);
+        PlayerPrefs.SetInt("EquippedSkin", skinManager.currentSkinIndex);
         PlayerPrefs.Save();
         Debug.Log("Skin " + skinManager.currentSkinIndex + " equipped.");
     }
