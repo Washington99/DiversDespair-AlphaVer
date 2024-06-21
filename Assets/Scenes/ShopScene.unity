@@ -774,11 +774,15 @@ MonoBehaviour:
   - {fileID: -175593594, guid: 8cfd058d3e7761b46af957f313ae50a7, type: 3}
   - {fileID: -1922523704, guid: 25a8bf893df22ef4d8a3a41a30abbb2d, type: 3}
   - {fileID: -1730334847, guid: 05743f7672acf184ca7d090f4e97efbc, type: 3}
+  - {fileID: -1859940964, guid: d06ef23863cd2c54c813790443d93fac, type: 3}
+  - {fileID: 729478096, guid: 22a94b8b60cf6964482af5fe74901384, type: 3}
   - {fileID: 21300000, guid: 73a1a5d949ea1094dae454d6f9631d42, type: 3}
-  Tiers: 0300000001000000020000000200000003000000030000000300000003000000
+  Tiers: 03000000010000000200000002000000030000000300000003000000010000000300000003000000
   Statuses:
   - On Sale
   - Sold
+  - On Sale
+  - On Sale
   - On Sale
   - On Sale
   - On Sale
