@@ -164,6 +164,9 @@ MonoBehaviour:
   freminetDrownSound: {fileID: 8300000, guid: d8d9b047f6424594d82917ca63d5971b, type: 3}
   fireflyDrownSound: {fileID: 8300000, guid: 198f071e4afdb3a4889dee9d1a512b6e, type: 3}
   powerUp: {fileID: 8300000, guid: 0afa18678dcfd17419c89929562e15f7, type: 3}
+  ScoreMultiplier: {fileID: 8300000, guid: 8b75f3840ebac2a4fa1fa6d960b36d3d, type: 3}
+  LightResetter: {fileID: 8300000, guid: a5fbe4ff0d87bbd45be610ed12dbb871, type: 3}
+  ImmunityShield: {fileID: 8300000, guid: 330d9093b583fa140884003b056ef901, type: 3}
 --- !u!4 &2116319
 Transform:
   m_ObjectHideFlags: 0
