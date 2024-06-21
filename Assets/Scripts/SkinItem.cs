@@ -37,8 +37,13 @@ public class SkinItem : MonoBehaviour
 
             if (cost > 0)
                 costText.text = cost.ToString();
+            else if (cost == 0)
+                costText.text = "SOLD";
             else
+            {
                 costText.text = "";
+                myButton.interactable = false;
+            }
         }
     }
 
@@ -86,10 +91,6 @@ public class SkinItem : MonoBehaviour
     void GoToSkinView()
     {
         // SceneManager.LoadSceneAsync("SkinView");
-        
-        if(index == -1)
-            Debug.Log("A filler was pressed");
-        else
-            Debug.Log("Skin Item " + index + " got pressed");
+        Debug.Log("Skin Item " + index + " got pressed");
     }
 }

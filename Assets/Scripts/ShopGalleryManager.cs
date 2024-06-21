@@ -34,16 +34,17 @@ public class ShopGalleryManager : MonoBehaviour
             SkinItem item = skin.AddComponent<SkinItem>();
 
             item.skin = Skins[i];
-            item.tier = Tiers[i];
+            item.tier = Tiers[i];            
+            item.status = Statuses[i];
 
-            if (item.tier == 3)
+            if (item.status.Equals("Sold"))
+                item.cost = 0;
+            else if (item.tier == 3)
                 item.cost = 3;
             else if (item.tier == 2)
                 item.cost = 5;
             else if (item.tier == 1)
                 item.cost = 10;
-            
-            item.status = Statuses[i];
             item.index = i;
 
             item.SetUpItem();
@@ -99,7 +100,7 @@ public class ShopGalleryManager : MonoBehaviour
             SkinItem skinFiller = Filler.GetComponent<SkinItem>();
             skinFiller.skin = fillerSprite;
             skinFiller.tier = 0;
-            skinFiller.cost = 0;
+            skinFiller.cost = -1;
             skinFiller.status = "Filler";
             skinFiller.index = -1;
 
