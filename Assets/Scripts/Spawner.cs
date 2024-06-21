@@ -29,6 +29,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ScoreMultiplier scoreMultiplierPowerup;
     [SerializeField] private int initialScoreMultiplierToSpawn;
 
+    [SerializeField] private HypnoFish hypnoFishObject;
+    [SerializeField] private int initialHypnoFishToSpawn;
+
     [SerializeField] private int collectibleSpawnRate;
     [SerializeField] private int spawnWidth;
     [SerializeField] private depthTracker dt;
@@ -46,6 +49,7 @@ public class Spawner : MonoBehaviour
     private float lightResetSpawnTime;
     private float shieldSpawnTime;
     private float scoreMultiplierSpawnTime;
+    private float hypnoFishSpawnTime;
 
     private int depthScaling;
     // Start is called before the first frame update
@@ -62,6 +66,7 @@ public class Spawner : MonoBehaviour
         lightResetSpawnTime = 10;
         shieldSpawnTime = 1;
         scoreMultiplierSpawnTime = 1;
+        hypnoFishSpawnTime = 10;
     }
 
 
@@ -76,9 +81,9 @@ public class Spawner : MonoBehaviour
         lightResetSpawnTime -= Time.fixedDeltaTime;
         shieldSpawnTime -= Time.fixedDeltaTime;
         scoreMultiplierSpawnTime -= Time.fixedDeltaTime;
+        hypnoFishSpawnTime -= Time.fixedDeltaTime;    
 
         SpawnOxygen();
-
         if (depthScaling > 50) {
             SpawnCoin();
         }
@@ -99,6 +104,10 @@ public class Spawner : MonoBehaviour
 
         if (depthScaling > 450) {
             SpawnTrap();
+        }
+
+        if (depthScaling > 550) {  
+            SpawnHypno();
         }
     }
 
@@ -212,6 +221,23 @@ public class Spawner : MonoBehaviour
             scoreMultiplier.transform.parent = gameObject.transform;
 
             scoreMultiplierSpawnTime = Random.Range(10, 15);
+        }
+        
+    }
+
+    void SpawnHypno () 
+    {
+        if (hypnoFishSpawnTime <= 0) {
+            GameObject hypnoFish = Instantiate(
+                hypnoFishObject.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            hypnoFish.transform.parent = gameObject.transform;
+
+            hypnoFishSpawnTime = Random.Range(10, 15);
         }
         
     }
