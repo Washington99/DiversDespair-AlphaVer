@@ -33,8 +33,4 @@ public class Coin : MonoBehaviour
               
         }
     }
-
-    void OnBecameInvisible() {
-        Destroy(gameObject);
-    }
 }

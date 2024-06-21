@@ -20,10 +20,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerStamina staminaBar;
     [SerializeField] PlayerLight playerLight;
     private bool isDead;
+    
+    private Color spriteColor;
+
     public GameManagerScript gameManager;
     public CoinManager cm;
 
     private Animator myAnimator;
+
+    public SkinSelector skinSelector;
+
     private AudioManager audioManager;
 
     //Inverts if hypnofish is touched
@@ -46,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        spriteColor = GetComponent<SpriteRenderer>().color;
     }
 
     private void Update()
@@ -62,7 +69,22 @@ public class PlayerMovement : MonoBehaviour
         {
             isDead = true;
             myAnimator.SetTrigger("death");
-            audioManager.PlaySFX(audioManager.drownSound);
+            if (skinSelector.currentSkinIndex == 1)
+            {
+                audioManager.PlaySFX(audioManager.covenDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 2)
+            {
+                audioManager.PlaySFX(audioManager.clownDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 3)
+            {
+                audioManager.PlaySFX(audioManager.freminetDrownSound);
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.drownSound);
+            }
             StartCoroutine(DestroyAfterDeath());
         }
     }
@@ -134,7 +156,15 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(shieldDuration);
 
         isShieldPresent = false;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = spriteColor;
+    }
+    public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        
+        yield return new WaitForSeconds(scoreMultiplierDuration);
+
+        GetComponent<SpriteRenderer>().color = spriteColor;
     }
 
     private IEnumerator Hypnotize(float hypnotizeDuration)
