@@ -39,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
         maxSpeed = speed;
 
         stamina = maxStamina;
-        staminaBar = GetComponentInChildren<PlayerStamina>();
-        staminaBar.UpdateStaminaBar(stamina, maxStamina);
 
+        staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
