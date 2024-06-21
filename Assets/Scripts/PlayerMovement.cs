@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
- 
+
 public class PlayerMovement : MonoBehaviour
-{ 
+{
     [SerializeField] private float speed;
     private float maxSpeed;
     private Rigidbody2D body;
@@ -15,22 +15,22 @@ public class PlayerMovement : MonoBehaviour
 
     // [SerializeField] private int shieldDuration;
     [SerializeField] private float maxStamina;
+
     [SerializeField] private float staminaDrain;
     [SerializeField] PlayerStamina staminaBar;
 
-    //new
     private bool isDead;
-    public GameManagerScript gameManager;
-    // public depthTracker depthTracking;
+    
+    private Color spriteColor;
 
-    //coin count
+    public GameManagerScript gameManager;
     public CoinManager cm;
 
-    //death animation
     private Animator myAnimator;
 
-    //death sound
-    AudioManager audioManager;
+    public SkinSelector skinSelector;
+
+    private AudioManager audioManager;
 
     private void Awake()
     {
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        spriteColor = GetComponent<SpriteRenderer>().color;
     }
 
     private void Update()
@@ -59,38 +60,55 @@ public class PlayerMovement : MonoBehaviour
             DrainStamina();
         }
 
-        //new
-        if(stamina <= 0 && !isDead){
-            isDead = true; 
-            //death animation
+        if (stamina <= 0 && !isDead)
+        {
+            isDead = true;
             myAnimator.SetTrigger("death");
-            audioManager.PlaySFX(audioManager.drownSound);
+            if (skinSelector.currentSkinIndex == 1)
+            {
+                audioManager.PlaySFX(audioManager.covenDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 2)
+            {
+                audioManager.PlaySFX(audioManager.clownDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 3)
+            {
+                audioManager.PlaySFX(audioManager.freminetDrownSound);
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.drownSound);
+            }
             StartCoroutine(DestroyAfterDeath());
-            // depthTracking.
         }
     }
 
-    private void Move() {
+    private void Move()
+    {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.Space))
             body.velocity = new Vector2(body.velocity.x, speed * 2);
     }
 
-    private void DrainStamina() {
+    private void DrainStamina()
+    {
         stamina -= staminaDrain * Time.deltaTime;
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
         staminaBar.UpdateStaminaBar(stamina, maxStamina);
     }
 
-    private void ClampVelocity() {
+    private void ClampVelocity()
+    {
         if (transform.position.x < -screenBounds.x || transform.position.x > screenBounds.x)
             body.velocity = new Vector2(0, body.velocity.y);
         if (transform.position.y < -screenBounds.y || transform.position.y > screenBounds.y)
-            body.velocity = new Vector2(body.velocity.x, 0);    
+            body.velocity = new Vector2(body.velocity.x, 0);
         if (body.velocity.y > maxSpeed)
-            body.velocity = new Vector2(body.velocity.x, maxSpeed); 
+            body.velocity = new Vector2(body.velocity.x, maxSpeed);
         if (body.velocity.y < -maxSpeed / 2)
-            body.velocity = new Vector2(body.velocity.x, -maxSpeed/2);
+            body.velocity = new Vector2(body.velocity.x, -maxSpeed / 2);
     }
 
     public void TakeDamage(float damage)
@@ -103,22 +121,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void HealStamina(float amount)
     {
-        if (stamina >0)
-            stamina += amount;
-            stamina = Mathf.Clamp(stamina, 0, maxStamina);
-            staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        stamina += amount;
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
+        staminaBar.UpdateStaminaBar(stamina, maxStamina);
     }
 
-    public void IncreaseCoinCount(float amount)
+    public void IncreaseCoinCount(int amount)
     {
-        cm.coinCount++;
+        cm.AddCoins(amount);
     }
 
     private IEnumerator DestroyAfterDeath()
     {
-        // Wait until the animation completes
         yield return new WaitForSeconds(2.0f);
 
+        cm.SaveRunCoins();
         gameObject.SetActive(false);
         gameManager.gameOver();
     }
@@ -131,6 +148,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(shieldDuration);
 
         isShieldPresent = false;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = spriteColor;
+    }
+    public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        
+        yield return new WaitForSeconds(scoreMultiplierDuration);
+
+        GetComponent<SpriteRenderer>().color = spriteColor;
     }
 }

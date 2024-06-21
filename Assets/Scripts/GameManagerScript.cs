@@ -8,6 +8,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
     public GameObject player;
+    public CoinManager cm;
 
     //new
     [SerializeField] TextMeshProUGUI currentScore;
