@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float staminaDrain;
     [SerializeField] PlayerStamina staminaBar;
-
+    [SerializeField] PlayerLight playerLight;
     private bool isDead;
     public GameManagerScript gameManager;
     public CoinManager cm;
@@ -26,11 +26,15 @@ public class PlayerMovement : MonoBehaviour
     private Animator myAnimator;
     private AudioManager audioManager;
 
+    //Inverts if hypnofish is touched
+    public bool moveInverted;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         maxSpeed = speed;
+        moveInverted = false;
 
         stamina = maxStamina;
         staminaBar = GetComponentInChildren<PlayerStamina>();
@@ -46,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+    
         Move();
         ClampVelocity();
         if (!isShieldPresent)
@@ -64,8 +69,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
-
+        if(!moveInverted)
+            body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        else
+            body.velocity = new Vector2(Input.GetAxis("Horizontal") * - speed, body.velocity.y);
+        
         if (Input.GetKeyDown(KeyCode.Space))
             body.velocity = new Vector2(body.velocity.x, speed * 2);
     }
@@ -127,5 +135,22 @@ public class PlayerMovement : MonoBehaviour
 
         isShieldPresent = false;
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator Hypnotize(float hypnotizeDuration)
+    {
+        float timeElapsed = 0f;
+        
+        body.velocity = new Vector2(-body.velocity.x, body.velocity.y);
+        while (timeElapsed < hypnotizeDuration)
+        {
+            
+            moveInverted = true;
+            playerLight.changeInnerLightColor(Color.Lerp(Color.magenta, Color.white, timeElapsed / (hypnotizeDuration + 0.5f)));
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        };
+        playerLight.changeInnerLightColor(Color.white);
+        moveInverted = false;
     }
 }

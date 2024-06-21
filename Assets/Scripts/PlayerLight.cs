@@ -27,4 +27,8 @@ public class PlayerLight : MonoBehaviour
         counter = dt.points;
 
     }
+
+    public void changeInnerLightColor(Color color) {
+        playerLight.color = color;
+    }
 }
