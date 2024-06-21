@@ -114,7 +114,7 @@ public class Spawner : MonoBehaviour
             SpawnTrap(0, 10, 15);
         }
 
-        else if (depthScaling < 1000) {
+        else if (depthScaling >= 500) {
             SpawnCoin(5, 10);
 
             SpawnScoreMultiplier(35, 40);
