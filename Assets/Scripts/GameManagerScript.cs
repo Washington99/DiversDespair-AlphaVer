@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -10,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject player;
     public CoinManager cm;
 
+    [SerializeField] Slider staminaBar;
     //new
     [SerializeField] TextMeshProUGUI currentScore;
     [SerializeField] TextMeshProUGUI finalScore;
@@ -36,7 +38,7 @@ public class GameManagerScript : MonoBehaviour
     public void gameOver(){
         gameOverUI.SetActive(true);
         finalScore.text = currentScore.text;
-
+        staminaBar.gameObject.SetActive(false);
         currentScore.gameObject.SetActive(false);
     }
 
