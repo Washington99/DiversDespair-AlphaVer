@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerStamina staminaBar;
 
     private bool isDead;
+    
+    private Color spriteColor;
+
     public GameManagerScript gameManager;
     public CoinManager cm;
 
@@ -45,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        spriteColor = GetComponent<SpriteRenderer>().color;
     }
 
     private void Update()
@@ -64,11 +68,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 audioManager.PlaySFX(audioManager.covenDrownSound);
             }
-            if (skinSelector.currentSkinIndex == 2)
+            else if (skinSelector.currentSkinIndex == 2)
             {
                 audioManager.PlaySFX(audioManager.clownDrownSound);
             }
-            if (skinSelector.currentSkinIndex == 3)
+            else if (skinSelector.currentSkinIndex == 3)
             {
                 audioManager.PlaySFX(audioManager.freminetDrownSound);
             }
@@ -144,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(shieldDuration);
 
         isShieldPresent = false;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = spriteColor;
     }
     public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
     {
@@ -152,6 +156,6 @@ public class PlayerMovement : MonoBehaviour
         
         yield return new WaitForSeconds(scoreMultiplierDuration);
 
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = spriteColor;
     }
 }

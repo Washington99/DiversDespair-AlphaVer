@@ -7,7 +7,7 @@ public class BackToShop : MonoBehaviour
 {
     public void BackToShopScreen()
     {
-        SceneManager.LoadSceneAsync("Main Menu"); //Update to Shop when Available
+        SceneManager.LoadSceneAsync("ShopScene");
     }
 
 }

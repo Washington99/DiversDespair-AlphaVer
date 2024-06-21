@@ -63,6 +63,8 @@ public class SkinItem : MonoBehaviour
 
         // set up image
         myImage = gameObject.AddComponent<Image>();
+
+        if (index == 7) myImage.color = new Color32(127, 241, 69, 255);
         myImage.sprite = skin;
 
         // set up background of the cost UI
@@ -95,7 +97,12 @@ public class SkinItem : MonoBehaviour
 
     void GoToSkinView()
     {
-        // SceneManager.LoadSceneAsync("SkinView");
+        
+        PlayerPrefs.SetInt("SelectedSkin", index);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("SkinView");
+
         Debug.Log("Skin Item " + index + " got pressed");
     }
 }

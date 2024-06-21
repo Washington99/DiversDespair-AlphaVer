@@ -767,13 +767,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Skins:
-  - {fileID: 21300000, guid: b3e98367d0ad1da4d81657cc6a07f976, type: 3}
-  - {fileID: -1947645381, guid: 1dbb21ebade339445a67f9539be8f2ec, type: 3}
-  - {fileID: 2021620228, guid: 1dbb21ebade339445a67f9539be8f2ec, type: 3}
-  Tiers: 030000000200000001000000
+  - {fileID: 21300000, guid: 73a1a5d949ea1094dae454d6f9631d42, type: 3}
+  - {fileID: -503593107, guid: bd3fcf4c7ad7bd143a6c76d91f332f89, type: 3}
+  - {fileID: 772504541, guid: 256af1b66898b3d4cbdfac728ab70953, type: 3}
+  - {fileID: 375942256, guid: 38cb5ed727d5bbe48b02f65650cb8369, type: 3}
+  - {fileID: -175593594, guid: 8cfd058d3e7761b46af957f313ae50a7, type: 3}
+  - {fileID: -1922523704, guid: 25a8bf893df22ef4d8a3a41a30abbb2d, type: 3}
+  - {fileID: -1730334847, guid: 05743f7672acf184ca7d090f4e97efbc, type: 3}
+  - {fileID: 21300000, guid: 73a1a5d949ea1094dae454d6f9631d42, type: 3}
+  Tiers: 0300000001000000020000000200000003000000030000000300000003000000
   Statuses:
   - On Sale
   - Sold
+  - On Sale
+  - On Sale
+  - On Sale
+  - On Sale
+  - On Sale
   - On Sale
   fillerSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
 --- !u!4 &1748528315

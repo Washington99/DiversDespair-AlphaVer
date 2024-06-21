@@ -546,9 +546,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1472877910}
-        m_TargetAssemblyTypeName: BackToShop, Assembly-CSharp
-        m_MethodName: BackToShopScreen
+      - m_Target: {fileID: 1472877912}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ShopMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73926c8c4b9f89489fd1e7506099498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSkinIndex: 7
+  currentSkinIndex: 1
   skinModels:
   - {fileID: 1889898544}
   - {fileID: 1831335472}
@@ -1910,7 +1910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1472877911}
-  - component: {fileID: 1472877910}
+  - component: {fileID: 1472877912}
   m_Layer: 0
   m_Name: ShopScreenScript
   m_TagString: Untagged
@@ -1918,18 +1918,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1472877910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472877909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d4f6cc660956e458ba2bc78a8b0e2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1472877911
 Transform:
   m_ObjectHideFlags: 0
@@ -1945,6 +1933,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1472877912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472877909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b40e12c1b0bb5a4485656318ffb8e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1526866004
 GameObject:
   m_ObjectHideFlags: 0
