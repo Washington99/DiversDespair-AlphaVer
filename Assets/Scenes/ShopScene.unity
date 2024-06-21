@@ -638,7 +638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: 129}
+  m_AnchoredPosition: {x: -23, y: 129}
   m_SizeDelta: {x: 3.8816, y: 1.9408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924802161
@@ -972,10 +972,14 @@ MonoBehaviour:
   - {fileID: -1922523704, guid: 25a8bf893df22ef4d8a3a41a30abbb2d, type: 3}
   - {fileID: -1730334847, guid: 05743f7672acf184ca7d090f4e97efbc, type: 3}
   - {fileID: 21300000, guid: 73a1a5d949ea1094dae454d6f9631d42, type: 3}
-  Tiers: 0300000001000000020000000200000003000000030000000300000003000000
+  - {fileID: -968511083, guid: d06ef23863cd2c54c813790443d93fac, type: 3}
+  - {fileID: -468323466, guid: 22a94b8b60cf6964482af5fe74901384, type: 3}
+  Tiers: 03000000010000000200000002000000030000000300000003000000030000000100000002000000
   Statuses:
   - On Sale
   - Sold
+  - On Sale
+  - On Sale
   - On Sale
   - On Sale
   - On Sale
