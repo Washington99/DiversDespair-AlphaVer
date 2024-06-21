@@ -1260,7 +1260,6 @@ MonoBehaviour:
   maxStamina: 100
   staminaDrain: 5
   staminaBar: {fileID: 2091077276}
-  playerLight: {fileID: 287313694}
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
@@ -2532,71 +2531,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.05999756, y: 0}
   m_SizeDelta: {x: -10.13, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &787823730
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 372257650467762442, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_Name
-      value: Hypno
-      objectReference: {fileID: 0}
-    - target: {fileID: 372257650467762442, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 993683919973016211, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832795244769414588, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
-      propertyPath: hypnotizeDuration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
 --- !u!1 &848256417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,6 +3438,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1044736398
 Rigidbody2D:
   serializedVersion: 4
@@ -3749,6 +3684,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1073955840
 Rigidbody2D:
   serializedVersion: 4
@@ -4698,6 +4634,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1290557686
 Rigidbody2D:
   serializedVersion: 4
@@ -5456,6 +5393,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1580173798
 Rigidbody2D:
   serializedVersion: 4
@@ -6441,6 +6379,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1860883068
 Rigidbody2D:
   serializedVersion: 4
@@ -7255,6 +7194,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &1939519454
 Rigidbody2D:
   serializedVersion: 4
@@ -7871,6 +7811,7 @@ MonoBehaviour:
   gameManager: {fileID: 1762249525}
   cm: {fileID: 511305809}
   skinSelector: {fileID: 2105450055}
+  moveInverted: 0
 --- !u!50 &2066756963
 Rigidbody2D:
   serializedVersion: 4
@@ -8559,4 +8500,3 @@ SceneRoots:
   - {fileID: 511305810}
   - {fileID: 2116319}
   - {fileID: 2105450054}
-  - {fileID: 787823730}

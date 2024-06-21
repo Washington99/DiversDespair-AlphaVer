@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float staminaDrain;
     [SerializeField] PlayerStamina staminaBar;
-    [SerializeField] PlayerLight playerLight;
+    private PlayerLight playerLight;
     private bool isDead;
     
     private Color spriteColor;
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        playerLight = GetComponentInChildren<PlayerLight>();
         body = GetComponent<Rigidbody2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         maxSpeed = speed;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myAnimator = GetComponent<Animator>();
         spriteColor = GetComponent<SpriteRenderer>().color;
+
     }
 
     private void Update()

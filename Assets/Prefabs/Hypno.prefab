@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -1
-  hypnotizeDuration: 3
+  hypnotizeDuration: 2
