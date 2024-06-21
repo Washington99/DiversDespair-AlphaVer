@@ -10,4 +10,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("GameProper");
     }
 
+    public void ShopMenu() 
+    {
+        SceneManager.LoadSceneAsync("ShopScene");
+    }
 }
