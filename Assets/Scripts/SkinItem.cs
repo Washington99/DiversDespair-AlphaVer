@@ -64,7 +64,7 @@ public class SkinItem : MonoBehaviour
         // set up image
         myImage = gameObject.AddComponent<Image>();
 
-        if (index == 7) myImage.color = new Color32(127, 241, 69, 255);
+        if (index == 9) myImage.color = new Color32(127, 241, 69, 255);
         myImage.sprite = skin;
 
         // set up background of the cost UI
