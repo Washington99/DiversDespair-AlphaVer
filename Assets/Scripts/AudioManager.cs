@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip covenDrownSound;
     public AudioClip clownDrownSound;
     public AudioClip freminetDrownSound;
+    public AudioClip fireflyDrownSound;
 
     private void Start(){
         musicSource.clip = bgMusic;

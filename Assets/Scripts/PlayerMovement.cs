@@ -76,6 +76,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 audioManager.PlaySFX(audioManager.freminetDrownSound);
             }
+            else if (skinSelector.currentSkinIndex == 7)
+            {
+                audioManager.PlaySFX(audioManager.fireflyDrownSound);
+            }
             else
             {
                 audioManager.PlaySFX(audioManager.drownSound);
