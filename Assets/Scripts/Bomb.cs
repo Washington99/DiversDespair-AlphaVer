@@ -36,11 +36,9 @@ public class Bomb : MonoBehaviour
         if (player != null)
         {
             audioManager.PlaySFX(audioManager.explosion);
+            
             // Drain stamina
-            if (player.ShieldCheck() == false)
-            {
-                player.TakeDamage(damageAmount);
-            }
+            player.TakeDamage(damageAmount);
 
             // Disable the collider to prevent further collisions while it explodes 
             myCollider.enabled = false;

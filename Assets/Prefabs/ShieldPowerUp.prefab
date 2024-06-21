@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554e72230b948d7469b279043b5bcc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldDuration: 5
   scrollSpeed: 0
