@@ -35,7 +35,7 @@ public class ShieldPowerUp : MonoBehaviour
         if (player != null)
         {
             player.StartCoroutine("ShieldPowerUp", shieldDuration);
-            audioManager.PlaySFX(audioManager.powerUp);
+            audioManager.PlaySFX(audioManager.ImmunityShield);
             Destroy(gameObject);
 
             // Disable the collider to prevent further collisions while it explodes 

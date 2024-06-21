@@ -20,6 +20,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip freminetDrownSound;
     public AudioClip fireflyDrownSound;
     public AudioClip powerUp;
+    public AudioClip ScoreMultiplier;
+    public AudioClip LightResetter;
+    public AudioClip ImmunityShield;
 
     private void Start(){
         musicSource.clip = bgMusic;
