@@ -8,7 +8,6 @@ public class ShopGalleryManager : MonoBehaviour
 {
     [SerializeField] List<Sprite> Skins;
     [SerializeField] List<int> Tiers;
-    [SerializeField] List<string> Statuses;
 
     [SerializeField] Sprite fillerSprite;
 
@@ -16,16 +15,16 @@ public class ShopGalleryManager : MonoBehaviour
 
     [SerializeField] Sprite costBG;
 
+    private const string SkinsOwnedKey = "SkinsOwned";
+    private List<int> SkinsOwned;
+    
     private List<SkinItem> SkinItems;
     private List<GameObject> GeneratedBackgrounds;
-
-    private int portraitsPerLevel;
 
     void Start()
     {
         SkinItems = new List<SkinItem>();
         GeneratedBackgrounds = new List<GameObject>();
-        portraitsPerLevel = 5;
 
         SetUpSkinItems();
 
@@ -34,6 +33,23 @@ public class ShopGalleryManager : MonoBehaviour
 
     void SetUpSkinItems()
     {
+        // Get Owned Skins
+        string skinsString = PlayerPrefs.GetString(SkinsOwnedKey, "");
+
+        // If the string is not empty, convert it back to a list
+        if (!string.IsNullOrEmpty(skinsString))
+        {
+            string[] skinsArray = skinsString.Split(',');
+            SkinsOwned = new List<int>();
+            foreach (string skin in skinsArray)
+            {
+                if (int.TryParse(skin, out int skinIndex))
+                {
+                    SkinsOwned.Add(skinIndex);
+                }
+            }
+        }
+
         for(int i = 0; i < Skins.Count; i++)
         {
             GameObject skin = new GameObject();
@@ -42,8 +58,12 @@ public class ShopGalleryManager : MonoBehaviour
             item.costBG = costBG;
 
             item.skin = Skins[i];
-            item.tier = Tiers[i];            
-            item.status = Statuses[i];
+            item.tier = Tiers[i];
+
+            if (SkinsOwned.Contains(i))
+                item.status = "Sold";
+            else
+                item.status = "On Sale";
 
             if (item.status.Equals("Sold"))
                 item.cost = 0;
@@ -66,23 +86,18 @@ public class ShopGalleryManager : MonoBehaviour
         GameObject Canvas = GameObject.Find("ShopCanvas");
         
         // configure placement of items
-        for (int i = 0; i < Math.Min(SkinItems.Count, 10); i++)
+        for (int i = 0; i < Math.Min(SkinItems.Count, 12); i++)
         {
             // set up skin background
             GameObject skinBackground = new GameObject();
             skinBackground.name = "SkinBackground";
             
             skinBackground.transform.SetParent(Canvas.transform);
-
             RectTransform skinBGTransform = skinBackground.AddComponent<RectTransform>();
             skinBGTransform.sizeDelta = new Vector2(70.25f, 90.3125f);
-            skinBGTransform.SetLocalPositionAndRotation(
-                new Vector3(
-                    i % portraitsPerLevel * 70.0f - 165.0f,
-                    (1-(float) Math.Floor((double) i / portraitsPerLevel)) * 100.0f - 60.0f, 
-                    0.0f
-                ), 
-                Quaternion.identity);
+            skinBGTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 130.0f,
+                                                                    (1-(float) Math.Floor((double) i/4)) * 100.0f - 80.0f, 0.0f),
+                                                        Quaternion.identity);
  
             skinBackground.AddComponent<Image>().sprite = backgroundSprite; 
 
@@ -92,18 +107,13 @@ public class ShopGalleryManager : MonoBehaviour
             SkinItems[i].gameObject.transform.SetParent(Canvas.transform);
             RectTransform skinTransform = SkinItems[i].gameObject.GetComponent<RectTransform>();
             skinTransform.sizeDelta = new Vector2(56.25f, 70.3125f);
-            skinTransform.SetLocalPositionAndRotation(
-                new Vector3(
-                    i % portraitsPerLevel * 70.0f - 165.0f, 
-                    (1-(float) Math.Floor((double) i / portraitsPerLevel)) * 100.0f - 60.0f, 
-                    0.0f
-                ),
-                Quaternion.identity);
+            skinTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 130.0f,
+                                                                (1-(float) Math.Floor((double) i/4)) * 100.0f - 80.0f, 0.0f),
+                                                    Quaternion.identity);
         }
 
-        /***
         // make fillers if necessary
-        // while (SkinItems.Count % 10 != 0)
+        // while (SkinItems.Count % 12 != 0)
         // {
         //     GameObject Filler = Instantiate(SkinItems[0].gameObject);
         //     Filler.name = "Filler";
@@ -114,13 +124,9 @@ public class ShopGalleryManager : MonoBehaviour
 
         //     fillerTransform.sizeDelta = new Vector2(70.25f, 90.3125f);
 
-        //     fillerTransform.SetLocalPositionAndRotation(
-        //         new Vector3(
-        //             SkinItems.Count % portraitsPerLevel * 70.0f - 130.0f, 
-        //             (1-(float) Math.Floor((double) SkinItems.Count / portraitsPerLevel)) * 90.0f - 30.0f, 
-        //             0.0f
-        //         ),
-        //         Quaternion.identity);
+        //     fillerTransform.SetLocalPositionAndRotation(new Vector3((SkinItems.Count % 4) * 70.0f - 130.0f,
+        //                                                         (1-(float) Math.Floor((double) SkinItems.Count/4)) * 90.0f - 30.0f, 0.0f),
+        //                                             Quaternion.identity);
             
         //     SkinItem skinFiller = Filler.GetComponent<SkinItem>();
         //     skinFiller.skin = fillerSprite;
@@ -131,7 +137,6 @@ public class ShopGalleryManager : MonoBehaviour
 
         //     SkinItems.Add(skinFiller);
         // }
-        ***/
 
         // for cleaner hierarchy
         GameObject ShopItems = new GameObject();
@@ -146,5 +151,30 @@ public class ShopGalleryManager : MonoBehaviour
 
         for (int j = GeneratedBackgrounds.Count; j < SkinItems.Count; j++)
             SkinItems[j].gameObject.transform.SetParent(ShopItems.transform);
+    }
+
+    void Update()
+    {
+        // Get Owned Skins
+        string skinsString = PlayerPrefs.GetString(SkinsOwnedKey, "");
+
+        // If the string is not empty, convert it back to a list
+        if (!string.IsNullOrEmpty(skinsString))
+        {
+            string[] skinsArray = skinsString.Split(',');
+            SkinsOwned = new List<int>();
+            foreach (string skin in skinsArray)
+            {
+                if (int.TryParse(skin, out int skinIndex))
+                {
+                    SkinsOwned.Add(skinIndex);
+                }
+            }
+        }
+
+        foreach(int skinIndex in SkinsOwned)
+        {
+            SkinItems[skinIndex].status = "Sold";
+        }
     }
 }
