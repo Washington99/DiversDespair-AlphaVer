@@ -73,6 +73,7 @@ public class ScoreMultiplier : MonoBehaviour
             
         if (player != null) {
             player.StartCoroutine("ScoreMultiplierPowerUp", multiplierDuration);
+            audioManager.PlaySFX(audioManager.powerUp);
             depthTracker.SetScoreMultiplier(scoreMultiplier, multiplierDuration);
             Destroy(gameObject);
         }

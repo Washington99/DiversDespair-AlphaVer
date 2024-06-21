@@ -25,6 +25,7 @@ public class LightResetter : MonoBehaviour
         if (player != null)
         {
             Debug.Log("ResetLight");
+            audioManager.PlaySFX(audioManager.powerUp);
             player.LightResetter();
             Destroy(gameObject);
         }
