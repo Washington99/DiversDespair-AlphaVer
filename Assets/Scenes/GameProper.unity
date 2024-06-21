@@ -1873,6 +1873,8 @@ MonoBehaviour:
   initialShieldToSpawn: 0
   scoreMultiplierPowerup: {fileID: 8819470596640944282, guid: 7588bbf313d4cc24a90e50a6da51155a, type: 3}
   initialScoreMultiplierToSpawn: 0
+  hypnoFishObject: {fileID: 4832795244769414588, guid: 1d26ca8ffc763f04c95ab0439537b67e, type: 3}
+  initialHypnoFishToSpawn: 0
   collectibleSpawnRate: 4
   spawnWidth: 5
   dt: {fileID: 1871025084}

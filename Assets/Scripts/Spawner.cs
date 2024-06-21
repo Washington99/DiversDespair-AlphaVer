@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -83,40 +84,55 @@ public class Spawner : MonoBehaviour
         scoreMultiplierSpawnTime -= Time.fixedDeltaTime;
         hypnoFishSpawnTime -= Time.fixedDeltaTime;    
 
-        SpawnOxygen();
-        if (depthScaling > 50) {
-            SpawnCoin();
+        SpawnOxygen(1, 3);
+
+        if (depthScaling < 50) {
+            SpawnCoin(5, 10);
         }
 
-        if (depthScaling > 150) {
-            SpawnScoreMultiplier();
-            SpawnBomb();
+        else if (depthScaling < 150) {
+            SpawnCoin(5, 10);
+            SpawnScoreMultiplier(0, 20);
+            SpawnBomb(0, 6, 8);
         }
 
-        if (depthScaling > 250) {
-            SpawnShield();
-            SpawnBomb();
+        else if (depthScaling < 300) {
+            SpawnCoin(5, 10);
+            SpawnScoreMultiplier(0, 20);
+            SpawnShield(25, 50);
+            SpawnBomb(1, 4, 6);
         }
 
-        if (depthScaling > 350) {
-            SpawnLightReset();
+        else if (depthScaling < 500) {
+            SpawnCoin(5, 10);
+
+            SpawnScoreMultiplier(20, 40);
+            SpawnShield(25, 50);
+            SpawnLightReset(50, 100);
+        
+            SpawnBomb(2, 4, 6);
+            SpawnTrap(0, 10, 15);
         }
 
-        if (depthScaling > 450) {
-            SpawnTrap();
-        }
+        else if (depthScaling < 1000) {
+            SpawnCoin(5, 10);
 
-        if (depthScaling > 550) {  
-            SpawnHypno();
+            SpawnScoreMultiplier(35, 40);
+            SpawnShield(35, 50);
+            SpawnLightReset(75, 100);
+        
+            SpawnBomb(2, 4, 6);
+            SpawnTrap(1, 10, 15);
+            SpawnHypno(10, 15);
         }
     }
 
 
-    void SpawnBomb()
+    void SpawnBomb(int structureIndex, float minSpawnTime, float maxSpawnTIme)
     {
         if (bombSpawnTime <= 0) {
             GameObject bomb = Instantiate(
-            bombObject[Random.Range(0, bombObject.Length)].gameObject, 
+            bombObject[structureIndex].gameObject, 
             transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
             Quaternion.identity
             );
@@ -124,15 +140,15 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             bomb.transform.parent = gameObject.transform;
 
-            bombSpawnTime = Random.Range(10, 15);
+            bombSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
         }
     }
 
-    void SpawnTrap () 
+    void SpawnTrap (int structureIndex, float minSpawnTime, float maxSpawnTIme) 
     {
         if (trapSpawnTime <= 0) {
             GameObject trap = Instantiate(
-                trapObject[Random.Range(0, trapObject.Length)].gameObject, 
+                trapObject[structureIndex].gameObject, 
                 transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
                 Quaternion.identity
                 );
@@ -140,92 +156,11 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             trap.transform.parent = gameObject.transform;
 
-            trapSpawnTime = Random.Range(15, 25);
+            trapSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
         }  
     }
 
-    void SpawnCoin () 
-    {
-        if (coinSpawnTime <= 0) {
-            GameObject coin = Instantiate(
-                coinObject[Random.Range(0,2)].gameObject, 
-                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
-                Quaternion.identity
-                );
-
-            // Place Instantiated bomb inside spawner object
-            coin.transform.parent = gameObject.transform;
-
-            coinSpawnTime = Random.Range(2, 4);
-        }
-        
-    }
-
-    void SpawnOxygen ()
-    {
-        if (oxygenSpawnTime <= 0) {
-            GameObject o2 = Instantiate(
-                oxygenObject.gameObject, 
-                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
-                Quaternion.identity
-                );
-
-            // Place Instantiated bomb inside spawner object
-            o2.transform.parent = gameObject.transform;
-
-            oxygenSpawnTime = Random.Range(1, 2);
-        }
-    }
-
-    void SpawnLightReset()
-    {
-        if (lightResetSpawnTime <= 0) {
-            GameObject lightReset = Instantiate(
-                    lightResetPowerup.gameObject, 
-                    transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
-                    Quaternion.identity
-                );
-
-            // Place Instantiated bomb inside spawner object
-            lightReset.transform.parent = gameObject.transform;
-
-            lightResetSpawnTime = Random.Range(10, 15);
-        }
-    }
-
-    void SpawnShield () 
-    {
-        if (shieldSpawnTime <= 0) {
-            GameObject shield = Instantiate(
-                shieldPowerup.gameObject, 
-                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
-                Quaternion.identity
-                );
-
-            // Place Instantiated bomb inside spawner object
-            shield.transform.parent = gameObject.transform;
-
-            shieldSpawnTime = Random.Range(10, 15);
-        }
-    }
-    void SpawnScoreMultiplier () 
-    {
-        if (scoreMultiplierSpawnTime <= 0) {
-            GameObject scoreMultiplier = Instantiate(
-                scoreMultiplierPowerup.gameObject, 
-                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
-                Quaternion.identity
-                );
-
-            // Place Instantiated bomb inside spawner object
-            scoreMultiplier.transform.parent = gameObject.transform;
-
-            scoreMultiplierSpawnTime = Random.Range(10, 15);
-        }
-        
-    }
-
-    void SpawnHypno () 
+    void SpawnHypno (float minSpawnTime, float maxSpawnTIme) 
     {
         if (hypnoFishSpawnTime <= 0) {
             GameObject hypnoFish = Instantiate(
@@ -237,8 +172,91 @@ public class Spawner : MonoBehaviour
             // Place Instantiated bomb inside spawner object
             hypnoFish.transform.parent = gameObject.transform;
 
-            hypnoFishSpawnTime = Random.Range(10, 15);
+            hypnoFishSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
         }
         
     }
+
+    void SpawnCoin (float minSpawnTime, float maxSpawnTIme) 
+    {
+        if (coinSpawnTime <= 0) {
+            GameObject coin = Instantiate(
+                coinObject[Random.Range(0, coinObject.Length)].gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            coin.transform.parent = gameObject.transform;
+
+            coinSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
+        }
+        
+    }
+
+    void SpawnOxygen (float minSpawnTime, float maxSpawnTIme)
+    {
+        if (oxygenSpawnTime <= 0) {
+            GameObject o2 = Instantiate(
+                oxygenObject.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            o2.transform.parent = gameObject.transform;
+
+            oxygenSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
+        }
+    }
+
+    void SpawnLightReset(float minSpawnTime, float maxSpawnTIme)
+    {
+        if (lightResetSpawnTime <= 0) {
+            GameObject lightReset = Instantiate(
+                    lightResetPowerup.gameObject, 
+                    transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                    Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            lightReset.transform.parent = gameObject.transform;
+
+            lightResetSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
+        }
+    }
+
+    void SpawnShield (float minSpawnTime, float maxSpawnTIme) 
+    {
+        if (shieldSpawnTime <= 0) {
+            GameObject shield = Instantiate(
+                shieldPowerup.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            shield.transform.parent = gameObject.transform;
+
+            shieldSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
+        }
+    }
+    void SpawnScoreMultiplier (float minSpawnTime, float maxSpawnTIme) 
+    {
+        if (scoreMultiplierSpawnTime <= 0) {
+            GameObject scoreMultiplier = Instantiate(
+                scoreMultiplierPowerup.gameObject, 
+                transform.position + new Vector3(Random.Range(-spawnWidth, spawnWidth), 0.0f, 0.0f), 
+                Quaternion.identity
+                );
+
+            // Place Instantiated bomb inside spawner object
+            scoreMultiplier.transform.parent = gameObject.transform;
+
+            scoreMultiplierSpawnTime = Random.Range(minSpawnTime, maxSpawnTIme);
+        }
+        
+    }
+
+    
 }
