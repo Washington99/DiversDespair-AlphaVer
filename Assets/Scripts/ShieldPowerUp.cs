@@ -7,6 +7,12 @@ public class ShieldPowerUp : MonoBehaviour
 {
     [SerializeField] private float shieldDuration;
     [SerializeField] private float scrollSpeed;
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +35,7 @@ public class ShieldPowerUp : MonoBehaviour
         if (player != null)
         {
             player.StartCoroutine("ShieldPowerUp", shieldDuration);
-
+            audioManager.PlaySFX(audioManager.powerUp);
             Destroy(gameObject);
 
             // Disable the collider to prevent further collisions while it explodes 
