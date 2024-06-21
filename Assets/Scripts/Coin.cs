@@ -28,14 +28,9 @@ public class Coin : MonoBehaviour
             // Point increase code here
 
             audioManager.PlaySFX(audioManager.coinCollect);
-
             player.IncreaseCoinCount(1);
             Destroy(gameObject);
               
         }
-    }
-
-    void OnBecameInvisible() {
-        Destroy(gameObject);
     }
 }

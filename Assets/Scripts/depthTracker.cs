@@ -14,12 +14,58 @@ public class depthTracker : MonoBehaviour
 
     public int points;
     float elapsedTime;
-    // Update is called once per frame
-    void Update()
+    private int scoreMultiplier;
+    private float multiplierActiveTime;
+
+    void Start()
     {
-        elapsedTime += Time.deltaTime * 10f;
-        points = (int)elapsedTime + cm.runCoinCount * 10;
-        counter.text =  "Score:\n" + points;
+        points = 0;
+        scoreMultiplier = 1;
+        multiplierActiveTime = 0.0f;
+
+        StartCoroutine("PointCounter");
+    }
+
+    // Update is called once per frame
+    // void Update()
+    // {
+    //     elapsedTime += Time.deltaTime;
+    //     points = Mathf.FloorToInt(elapsedTime) * scoreMultiplier;
+    //     counter.text =  "Depth:\n" + points + " m";
+
+    //     if (multiplierActiveTime > 0.0f) {
+            
+    //         multiplierActiveTime -= Time.deltaTime;
+    //     }
+            
+    //     if (multiplierActiveTime <= 0.0f) {
+    //         scoreMultiplier = 1;
+    //         // elapsedTime = points * scoreMultiplier; // So elapsed time doesnt reset at multiplier end
+    //     }
+            
+    // }
+
+    private IEnumerator PointCounter() 
+    {
+        while (true) {
+            if (multiplierActiveTime <= 0.0f) {
+                scoreMultiplier = 1;
+            }
+
+            points += scoreMultiplier;
+            counter.text =  "Depth:\n" + points * 10 + " m";
+
+            multiplierActiveTime--;
+
+            yield return new WaitForSeconds(1.0f);
+        }
+        
+    }
+
+    public void SetScoreMultiplier(int multiplier, int duration)
+    {
+        scoreMultiplier = multiplier;
+        multiplierActiveTime = duration;
     }
 
 //new

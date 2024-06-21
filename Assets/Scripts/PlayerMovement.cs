@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,16 +10,26 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 screenBounds;
     private float stamina;
+
+    public bool isShieldPresent = false;
+
+    // [SerializeField] private int shieldDuration;
     [SerializeField] private float maxStamina;
 
     [SerializeField] private float staminaDrain;
     [SerializeField] PlayerStamina staminaBar;
 
     private bool isDead;
+    
+    private Color spriteColor;
+
     public GameManagerScript gameManager;
     public CoinManager cm;
 
     private Animator myAnimator;
+
+    public SkinSelector skinSelector;
+
     private AudioManager audioManager;
 
     private void Awake()
@@ -37,19 +48,38 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        spriteColor = GetComponent<SpriteRenderer>().color;
     }
 
     private void Update()
     {
         Move();
         ClampVelocity();
-        DrainStamina();
+        if (!isShieldPresent)
+        {
+            DrainStamina();
+        }
 
         if (stamina <= 0 && !isDead)
         {
             isDead = true;
             myAnimator.SetTrigger("death");
-            audioManager.PlaySFX(audioManager.drownSound);
+            if (skinSelector.currentSkinIndex == 1)
+            {
+                audioManager.PlaySFX(audioManager.covenDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 2)
+            {
+                audioManager.PlaySFX(audioManager.clownDrownSound);
+            }
+            else if (skinSelector.currentSkinIndex == 3)
+            {
+                audioManager.PlaySFX(audioManager.freminetDrownSound);
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.drownSound);
+            }
             StartCoroutine(DestroyAfterDeath());
         }
     }
@@ -83,8 +113,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        stamina -= damage;
-        staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        if (!isShieldPresent) {
+            stamina -= damage;
+            staminaBar.UpdateStaminaBar(stamina, maxStamina);
+        }
     }
 
     public void HealStamina(float amount)
@@ -106,5 +138,24 @@ public class PlayerMovement : MonoBehaviour
         cm.SaveRunCoins();
         gameObject.SetActive(false);
         gameManager.gameOver();
+    }
+
+    public IEnumerator ShieldPowerUp(float shieldDuration)
+    {
+        isShieldPresent = true;
+        GetComponent<SpriteRenderer>().color = Color.green;
+        
+        yield return new WaitForSeconds(shieldDuration);
+
+        isShieldPresent = false;
+        GetComponent<SpriteRenderer>().color = spriteColor;
+    }
+    public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        
+        yield return new WaitForSeconds(scoreMultiplierDuration);
+
+        GetComponent<SpriteRenderer>().color = spriteColor;
     }
 }

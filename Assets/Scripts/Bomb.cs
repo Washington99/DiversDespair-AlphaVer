@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class Bomb : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Bomb : MonoBehaviour
         if (player != null)
         {
             audioManager.PlaySFX(audioManager.explosion);
+            
             // Drain stamina
             player.TakeDamage(damageAmount);
 
@@ -55,11 +57,6 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Destroy the bomb object
-        Destroy(gameObject);
-    }
-
-    void OnBecameInvisible()
-    {
         Destroy(gameObject);
     }
 }

@@ -8,6 +8,8 @@ public class PlayerLight : MonoBehaviour
 
     private Light2D playerLight;
     [SerializeField] depthTracker dt;
+
+    private float counter;
     // Start is called before the first frame update
     void Start() {
         playerLight = GetComponent<Light2D>();
@@ -17,6 +19,12 @@ public class PlayerLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerLight.pointLightOuterRadius = Mathf.Max(2, 12 - dt.points*0.01f);
+        playerLight.pointLightOuterRadius = Mathf.Max(2, 12 - (dt.points-counter)*0.1f);
+    }
+
+    public void LightResetter() 
+    {
+        counter = dt.points;
+
     }
 }
