@@ -2568,8 +2568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.742, y: -194.4}
-  m_SizeDelta: {x: 952.76, y: 324.89}
+  m_AnchoredPosition: {x: 3.988, y: -210.994}
+  m_SizeDelta: {x: 964.156, y: 320.902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891502193
 MonoBehaviour:
@@ -2647,7 +2647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 13197398b373f92498c7ea5cf9410220, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea10d58ddd5eb9f4a9ebb6432f771918, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3090,6 +3090,7 @@ MonoBehaviour:
   skins: {fileID: 2140540880}
   buy: {fileID: 538194510}
   equip: {fileID: 376996988}
+  equipped: {fileID: 1891502191}
   skinManager: {fileID: 1212545733}
 --- !u!4 &2109457523
 Transform:

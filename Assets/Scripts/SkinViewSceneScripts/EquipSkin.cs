@@ -12,5 +12,8 @@ public class EquipSkin : MonoBehaviour
         PlayerPrefs.SetInt("EquippedSkin", skinManager.currentSkinIndex);
         PlayerPrefs.Save();
         Debug.Log("Skin " + skinManager.currentSkinIndex + " equipped.");
+
+        // Update the UI after equipping the skin
+        FindObjectOfType<UIChangeScript>().skinCheck();
     }
 }

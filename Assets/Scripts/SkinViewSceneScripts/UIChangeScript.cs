@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class UIChangeScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     public SkinsOwned skins;
     public GameObject buy;
     public GameObject equip;
+    public GameObject equipped;
     public SkinManager skinManager;
 
     void Start()
     {
-        
+        skinCheck();
     }
 
-    // Update is called once per frame
     void Update()
     {
         skinCheck();
@@ -23,15 +22,28 @@ public class UIChangeScript : MonoBehaviour
 
     public void skinCheck()
     {
+        int equippedSkin = PlayerPrefs.GetInt("EquippedSkin", 0);
+
         if (skins.CheckSkins(skinManager.currentSkinIndex))
         {
-            buy.SetActive(false); 
-            equip.SetActive(true);
+            buy.SetActive(false);
+
+            if (skinManager.currentSkinIndex == equippedSkin)
+            {
+                equip.SetActive(false);
+                equipped.SetActive(true);
+            }
+            else
+            {
+                equip.SetActive(true);
+                equipped.SetActive(false);
+            }
         }
         else
         {
             buy.SetActive(true);
             equip.SetActive(false);
+            equipped.SetActive(false);
         }
     }
 }
