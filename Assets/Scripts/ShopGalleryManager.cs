@@ -12,6 +12,10 @@ public class ShopGalleryManager : MonoBehaviour
 
     [SerializeField] Sprite fillerSprite;
 
+    [SerializeField] Sprite backgroundSprite;
+
+    [SerializeField] Sprite costBG;
+
     private List<SkinItem> SkinItems;
     private List<GameObject> GeneratedBackgrounds;
 
@@ -32,6 +36,7 @@ public class ShopGalleryManager : MonoBehaviour
             GameObject skin = new GameObject();
             skin.name = "SkinItem";
             SkinItem item = skin.AddComponent<SkinItem>();
+            item.costBG = costBG;
 
             item.skin = Skins[i];
             item.tier = Tiers[i];            
@@ -66,11 +71,12 @@ public class ShopGalleryManager : MonoBehaviour
             
             skinBackground.transform.SetParent(Canvas.transform);
             RectTransform skinBGTransform = skinBackground.AddComponent<RectTransform>();
-            skinBGTransform.sizeDelta = new Vector2(56.25f, 70.3125f);
-            skinBGTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 105.0f,
-                                                                    (1-(float) Math.Floor((double) i/4)) * 85.0f, 0.0f),
+            skinBGTransform.sizeDelta = new Vector2(70.25f, 90.3125f);
+            skinBGTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 130.0f,
+                                                                    (1-(float) Math.Floor((double) i/4)) * 100.0f - 80.0f, 0.0f),
                                                         Quaternion.identity);
-            skinBackground.AddComponent<Image>();
+ 
+            skinBackground.AddComponent<Image>().sprite = backgroundSprite; 
 
             GeneratedBackgrounds.Add(skinBackground);
 
@@ -78,34 +84,36 @@ public class ShopGalleryManager : MonoBehaviour
             SkinItems[i].gameObject.transform.SetParent(Canvas.transform);
             RectTransform skinTransform = SkinItems[i].gameObject.GetComponent<RectTransform>();
             skinTransform.sizeDelta = new Vector2(56.25f, 70.3125f);
-            skinTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 105.0f,
-                                                                (1-(float) Math.Floor((double) i/4)) * 85.0f, 0.0f),
+            skinTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 130.0f,
+                                                                (1-(float) Math.Floor((double) i/4)) * 100.0f - 80.0f, 0.0f),
                                                     Quaternion.identity);
         }
 
         // make fillers if necessary
-        while (SkinItems.Count % 12 != 0)
-        {
-            GameObject Filler = Instantiate(SkinItems[0].gameObject);
-            Filler.name = "Filler";
+        // while (SkinItems.Count % 12 != 0)
+        // {
+        //     GameObject Filler = Instantiate(SkinItems[0].gameObject);
+        //     Filler.name = "Filler";
 
-            Filler.transform.SetParent(Canvas.transform);
+        //     Filler.transform.SetParent(Canvas.transform);
 
-            RectTransform fillerTransform = Filler.GetComponent<RectTransform>();
+        //     RectTransform fillerTransform = Filler.GetComponent<RectTransform>();
 
-            fillerTransform.SetLocalPositionAndRotation(new Vector3((SkinItems.Count % 4) * 70.0f - 105.0f,
-                                                                (1-(float) Math.Floor((double) SkinItems.Count/4)) * 85.0f, 0.0f),
-                                                    Quaternion.identity);
+        //     fillerTransform.sizeDelta = new Vector2(70.25f, 90.3125f);
+
+        //     fillerTransform.SetLocalPositionAndRotation(new Vector3((SkinItems.Count % 4) * 70.0f - 130.0f,
+        //                                                         (1-(float) Math.Floor((double) SkinItems.Count/4)) * 90.0f - 30.0f, 0.0f),
+        //                                             Quaternion.identity);
             
-            SkinItem skinFiller = Filler.GetComponent<SkinItem>();
-            skinFiller.skin = fillerSprite;
-            skinFiller.tier = 0;
-            skinFiller.cost = -1;
-            skinFiller.status = "Filler";
-            skinFiller.index = -1;
+        //     SkinItem skinFiller = Filler.GetComponent<SkinItem>();
+        //     skinFiller.skin = fillerSprite;
+        //     skinFiller.tier = 0;
+        //     skinFiller.cost = -1;
+        //     skinFiller.status = "Filler";
+        //     skinFiller.index = -1;
 
-            SkinItems.Add(skinFiller);
-        }
+        //     SkinItems.Add(skinFiller);
+        // }
 
         // for cleaner hierarchy
         GameObject ShopItems = new GameObject();
