@@ -217,5 +217,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -2
-  multiplierDuration: 5
+  multiplierDuration: 30
   scoreMultiplier3X: {fileID: 21300000, guid: 0563335ee7aff0f49b54736df2130ac7, type: 3}

@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         
-        yield return new WaitForSeconds(scoreMultiplierDuration);
+        yield return new WaitForSeconds(scoreMultiplierDuration/10.0f);
 
         GetComponent<SpriteRenderer>().color = spriteColor;
     }

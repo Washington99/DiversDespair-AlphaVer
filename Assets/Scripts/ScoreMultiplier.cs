@@ -36,7 +36,7 @@ public class ScoreMultiplier : MonoBehaviour
 
     void Start()
     {
-        if (depthTracker.points * 10 < 100)
+        if (depthTracker.points < 100)
             scoreMultiplier = 2;
         
         else

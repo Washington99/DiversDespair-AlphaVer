@@ -19,7 +19,7 @@ public class PlayerLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerLight.pointLightOuterRadius = Mathf.Max(2, 12 - (dt.points-counter)*0.1f);
+        playerLight.pointLightOuterRadius = Mathf.Max(2, 12 - (dt.points-counter)*0.01f);
     }
 
     public void LightResetter() 
