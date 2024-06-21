@@ -23,7 +23,8 @@ public class BuySkin : MonoBehaviour
     public void BoughtSkin()
     {
         int totalCoins = PlayerPrefs.GetInt(TotalCoinsKey, 0);
-        totalCoins -= 1;
+        int cost = PlayerPrefs.GetInt("SelectedSkinCost", 0);
+        totalCoins -= cost;
         PlayerPrefs.SetInt(TotalCoinsKey, totalCoins);
         PlayerPrefs.Save();
 
