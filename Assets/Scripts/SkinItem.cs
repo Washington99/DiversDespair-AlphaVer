@@ -14,6 +14,8 @@ public class SkinItem : MonoBehaviour
     public string status;   // On Sale, Sold or Filler
     public int index = 0;
 
+    public Sprite costBG;
+
     private Button myButton;
     private Image myImage;
     private TextMeshProUGUI costText;
@@ -38,7 +40,7 @@ public class SkinItem : MonoBehaviour
             if (cost > 0)
                 costText.text = cost.ToString();
             else if (cost == 0)
-                costText.text = "SOLD";
+                costText.text = "---";
             else
             {
                 costText.text = "";
@@ -73,11 +75,11 @@ public class SkinItem : MonoBehaviour
         costUIBackground.transform.SetParent(gameObject.transform);
 
         RectTransform bgRectTransform = costUIBackground.AddComponent<RectTransform>();
-        bgRectTransform.sizeDelta = new Vector2(56.25f, 20.0f);
-        bgRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -26.0f, 0.0f), Quaternion.identity);
+        bgRectTransform.sizeDelta = new Vector2(60.25f, 35.0f);
+        bgRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -40.0f, 0.0f), Quaternion.identity);
 
         Image bgColor = costUIBackground.AddComponent<Image>();
-        bgColor.color = new Color(0.5f, 0.5f, 0.5f, 0.95f);
+        bgColor.sprite = costBG;
         
         // set up the cost UI
         GameObject costTextObj = new GameObject();
@@ -85,12 +87,12 @@ public class SkinItem : MonoBehaviour
         costTextObj.transform.SetParent(gameObject.transform);
 
         RectTransform txtRectTransform = costTextObj.AddComponent<RectTransform>();
-        txtRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -26.0f, 0.0f), Quaternion.identity);
+        txtRectTransform.SetLocalPositionAndRotation(new Vector3(0.0f, -38.0f, 0.0f), Quaternion.identity);
 
         costText = costTextObj.AddComponent<TextMeshProUGUI>();
         costText.fontStyle = FontStyles.Bold;
-        costText.fontSize = 16;
-        costText.color = Color.black;
+        costText.fontSize = 12;
+        costText.color = Color.white;
         costText.alignment = TextAlignmentOptions.Center;
         costText.text = cost.ToString();
     }
