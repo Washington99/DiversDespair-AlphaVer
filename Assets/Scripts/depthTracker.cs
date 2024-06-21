@@ -53,11 +53,11 @@ public class depthTracker : MonoBehaviour
             }
 
             points += scoreMultiplier;
-            counter.text =  "Depth:\n" + points * 10 + " m";
+            counter.text =  "Depth:\n" + points + " m";
 
             multiplierActiveTime--;
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.1f);
         }
         
     }

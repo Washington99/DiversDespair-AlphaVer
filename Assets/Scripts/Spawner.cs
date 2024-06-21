@@ -73,7 +73,7 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        depthScaling = dt.points * 10;
+        depthScaling = dt.points;
 
         oxygenSpawnTime -= Time.fixedDeltaTime;
         bombSpawnTime -= Time.fixedDeltaTime;
