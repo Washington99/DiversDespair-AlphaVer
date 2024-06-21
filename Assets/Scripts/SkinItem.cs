@@ -42,6 +42,11 @@ public class SkinItem : MonoBehaviour
             else
             {
                 costText.text = "";
+                var colors = myButton.colors;
+                var disabledColor = colors.disabledColor;
+                disabledColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                colors.disabledColor = disabledColor;
+                myButton.colors = colors;
                 myButton.interactable = false;
             }
         }
