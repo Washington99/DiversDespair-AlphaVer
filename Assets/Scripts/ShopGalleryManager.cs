@@ -8,16 +8,17 @@ public class ShopGalleryManager : MonoBehaviour
 {
     [SerializeField] List<Sprite> Skins;
     [SerializeField] List<int> Tiers;
-    [SerializeField] List<int> Prices;
     [SerializeField] List<string> Statuses;
 
     [SerializeField] Sprite fillerSprite;
 
     private List<SkinItem> SkinItems;
+    private List<GameObject> GeneratedBackgrounds;
 
     void Start()
     {
         SkinItems = new List<SkinItem>();
+        GeneratedBackgrounds = new List<GameObject>();
 
         SetUpSkinItems();
 
@@ -34,7 +35,14 @@ public class ShopGalleryManager : MonoBehaviour
 
             item.skin = Skins[i];
             item.tier = Tiers[i];
-            item.cost = Prices[i];
+
+            if (item.tier == 3)
+                item.cost = 3;
+            else if (item.tier == 2)
+                item.cost = 5;
+            else if (item.tier == 1)
+                item.cost = 10;
+            
             item.status = Statuses[i];
             item.index = i;
 
@@ -52,6 +60,18 @@ public class ShopGalleryManager : MonoBehaviour
         for (int i = 0; i < Math.Min(SkinItems.Count, 12); i++)
         {
             // set up skin background
+            GameObject skinBackground = new GameObject();
+            skinBackground.name = "SkinBackground";
+            
+            skinBackground.transform.SetParent(Canvas.transform);
+            RectTransform skinBGTransform = skinBackground.AddComponent<RectTransform>();
+            skinBGTransform.sizeDelta = new Vector2(56.25f, 70.3125f);
+            skinBGTransform.SetLocalPositionAndRotation(new Vector3((i % 4) * 70.0f - 105.0f,
+                                                                    (1-(float) Math.Floor((double) i/4)) * 85.0f, 0.0f),
+                                                        Quaternion.identity);
+            skinBackground.AddComponent<Image>();
+
+            GeneratedBackgrounds.Add(skinBackground);
 
             // set up skin item
             SkinItems[i].gameObject.transform.SetParent(Canvas.transform);
@@ -85,5 +105,19 @@ public class ShopGalleryManager : MonoBehaviour
 
             SkinItems.Add(skinFiller);
         }
+
+        // for cleaner hierarchy
+        GameObject ShopItems = new GameObject();
+        ShopItems.name = "ShopItems";
+        ShopItems.transform.SetParent(Canvas.transform);
+
+        for (int i = 0; i < GeneratedBackgrounds.Count; i++)
+        {
+            GeneratedBackgrounds[i].transform.SetParent(ShopItems.transform);
+            SkinItems[i].gameObject.transform.SetParent(ShopItems.transform);
+        }
+
+        for (int j = GeneratedBackgrounds.Count; j < SkinItems.Count; j++)
+            SkinItems[j].gameObject.transform.SetParent(ShopItems.transform);
     }
 }

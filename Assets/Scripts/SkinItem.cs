@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-// problem: cannot change from transform to rectTransform if it is a prefab
-
 public class SkinItem : MonoBehaviour
 {
     public Sprite skin;
