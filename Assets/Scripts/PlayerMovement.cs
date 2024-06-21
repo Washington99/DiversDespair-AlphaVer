@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public IEnumerator ScoreMultiplierPowerUp(float scoreMultiplierDuration)
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().color = new Color32(255, 165, 0, 255);
         
         yield return new WaitForSeconds(scoreMultiplierDuration);
 
